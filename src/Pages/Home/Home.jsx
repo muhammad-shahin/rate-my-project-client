@@ -9,6 +9,7 @@ import OverlapImage from '../../ReuseableUI/OverlapImage/OverlapImage';
 import Categories from '../../Components/Categories/Categories';
 import Faq from '../../Components/FAQ/Faq';
 import Footer from '../../Layouts/Footer/Footer';
+import GetStartedBanner from '../../Components/Banner/GetStartedBanner';
 
 const Home = () => {
   const { setLoading } = useContext(AuthContext);
@@ -53,6 +54,10 @@ const Home = () => {
       <div className='container mx-auto lg:my-28 my-8'>
         <Heading title='Frequently Asked Question' />
         <Faq />
+      </div>
+      {/* FAQ section */}
+      <div className='lg:my-28 my-8'>
+        <GetStartedBanner title='What are you waiting for? Join the study team!' />
       </div>
       {/* footer section */}
       <Footer />
