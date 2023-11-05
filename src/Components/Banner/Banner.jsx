@@ -13,7 +13,7 @@ const Banner = () => {
       </div>
       {/* left side */}
       <div className='capitalize text-white space-y-6'>
-        <h1 className='font-semibold text-2xl w-full lg:text-6xl lg:max-w-3xl gradient-text '>
+        <h1 className='font-semibold text-2xl w-full lg:text-6xl lg:max-w-3xl'>
           Unlock Your Academic Potential: Transform Your Study Experience with
           Collaborative Learning
         </h1>

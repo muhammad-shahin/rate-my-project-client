@@ -114,7 +114,7 @@ const Navbar = () => {
               className='text-[22px]'
             />
             {user && (
-              <p className='bg-red-600 rounded-full text-[8px] p-1 flex justify-center items-center absolute top-0 right-0 w-[15px] h-[15px] text-white'>
+              <p className='bg-red-600 rounded-full text-[8px] p-1 flex justify-center items-center absolute top-0 right-0 w-[15px] h-[15px] text-white grad-bg'>
                 {cartCount ? cartCount : 0}
               </p>
             )}

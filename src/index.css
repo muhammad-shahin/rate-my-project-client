@@ -19,6 +19,10 @@ body {
   @apply flex justify-between items-center;
 }
 
+.round-bg {
+  @apply rounded-full p-2 bg-primary bg-opacity-70;
+}
+
 /* overlay effect */
 .overlay {
   position: absolute;
@@ -38,24 +42,15 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.custom-gradient-text {
-  font-size: 36px;
+.gradient-text {
   font-weight: bold;
-  background: linear-gradient(
-    to right,
-    #ff6b6b,
-    #ffd166,
-    #74c69d
-  ); /* Change the gradient colors here */
+  position: relative;
+
+  /* Gradient fill for the text */
+  background: linear-gradient(90deg, #00a9ff, #9c85f0, #4fc2fc, #7852fe);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  display: inline-block;
-  background-size: 100% 200%;
-  background-clip: text;
-  color: transparent;
-  animation: gradientAnimation 3s infinite;
-  text-align: center;
 }
 
 @keyframes gradientAnimation {
@@ -64,5 +59,44 @@ body {
   }
   100% {
     background-position: 200% 0;
+  }
+}
+
+/* gradient animation */
+
+.gradient-anim:hover {
+  background: linear-gradient(45deg, #3fbefd, #89cff3, #c0b0fc, #aa94f7);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s infinite linear;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0;
+  }
+  12.5% {
+    background-position: 100% 12.5%;
+  }
+  25% {
+    background-position: 0% 25%;
+  }
+  37.5% {
+    background-position: 100% 37.5%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  62.5% {
+    background-position: 100% 62.5%;
+  }
+  75% {
+    background-position: 0% 75%;
+  }
+  87.5% {
+    background-position: 100% 87.5%;
+  }
+  100% {
+    background-position: 0% 100%;
   }
 }

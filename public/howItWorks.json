@@ -1,0 +1,27 @@
+[
+  {
+    "Title": "Create Assignments",
+    "Description": "Get started by crafting your own study assignments. Define tasks, set deadlines, and specify the level of difficulty. You're in control.",
+    "Icon": "FaTasks"
+  },
+  {
+    "Title": "Collaborate with Friends",
+    "Description": "Invite your study buddies to join your group. Share assignments, resources, and dive into productive study sessions. Learning is more fun when it's shared.",
+    "Icon": "FaUsers"
+  },
+  {
+    "Title": "Learn, Collaborate, Succeed",
+    "Description": "Immerse yourself in your study assignments. Collaborate with friends to tackle challenges, ask questions, and share knowledge. Academic success becomes a shared accomplishment.",
+    "Icon": "FaChalkboardTeacher"
+  },
+  {
+    "Title": "Track Your Progress",
+    "Description": "Stay on top of your academic progress with insightful analytics. Monitor assignment completion, study hours, and performance metrics to fine-tune your learning journey.",
+    "Icon": "FaChartLine"
+  },
+  {
+    "Title": "Join the Community",
+    "Description": "Connect with a thriving community of students and educators. Gain valuable insights, seek assistance, and explore study groups to align with your interests.",
+    "Icon": "FaUserGroup"
+  }
+]
