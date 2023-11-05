@@ -100,7 +100,7 @@ const FlipCard = ({ cardData }) => {
   return (
     <div className='flex-cen'>
       <div
-        className='flip-card md:w-[450px] lg:w-[600px] w-[320px] lg:h-[360px] h-[250px] rounded-md'
+        className='flip-card lg:w-[450px] xl:w-[600px] w-[320px] lg:h-[360px] h-[250px] rounded-md'
         onClick={handleFlip}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -139,7 +139,7 @@ const FlipCard = ({ cardData }) => {
 
           {/* back part of card */}
           <div
-            className='flip-card-back bg-cover border-[1px] text-white rounded-lg'
+            className='flip-card-back bg-cover border-4 border-primary cursor-pointer text-white rounded-lg'
             style={{ backgroundImage: `url(${backImage})` }}
           >
             <div className='h-full w-full rounded-lg'>
