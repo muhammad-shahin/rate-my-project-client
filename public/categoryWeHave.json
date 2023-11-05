@@ -1,0 +1,26 @@
+[
+  {
+    "categoryName": "Physics",
+    "categoryDetails": "Explore the laws of the physical universe and unravel the mysteries of matter, energy, and motion."
+  },
+  {
+    "categoryName": "Mathematics",
+    "categoryDetails": "Unleash the power of numbers, equations, and mathematical concepts. Solve problems and explore the beauty of mathematics."
+  },
+  {
+    "categoryName": "Programming",
+    "categoryDetails": "Master the art of coding and software development. Learn various programming languages and build applications."
+  },
+  {
+    "categoryName": "Web Development",
+    "categoryDetails": "Craft interactive and visually appealing websites. Explore front-end and back-end technologies for web development."
+  },
+  {
+    "categoryName": "App Development",
+    "categoryDetails": "Create mobile applications for different platforms. Build apps that can run on iOS, Android, and more."
+  },
+  {
+    "categoryName": "Artificial Intelligence",
+    "categoryDetails": "Delve into the world of AI and machine learning. Develop intelligent systems and learn about data science."
+  }
+]
