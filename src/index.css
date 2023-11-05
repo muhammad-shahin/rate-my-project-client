@@ -11,6 +11,14 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+/* tailwind resuable class */
+.flexme {
+  @apply flex justify-start items-center gap-3;
+}
+.flex-bet {
+  @apply flex justify-between items-center;
+}
+
 /* overlay effect */
 .overlay {
   position: absolute;

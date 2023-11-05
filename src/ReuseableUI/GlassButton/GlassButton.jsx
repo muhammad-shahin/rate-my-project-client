@@ -4,7 +4,7 @@ const GlassButton = ({ text, icon, handleOnClick }) => {
   return (
     <>
       <button
-        className='px-5 py-2 rounded-full bg-blue-500 backdrop-blur-[25px] bg-opacity-[0.59] font-medium text-[18px] text-white uppercase border-2 border-transparent hover:bg-transparent hover:border-blue-500 hover:text-blue-500 duration-500 flex justify-center items-center gap-4 w-[200px]'
+        className='lg:px-5 lg:py-2 px-3 py-1 rounded-full bg-tertiary backdrop-blur-[25px] font-medium text-[18px] text-white uppercase lg:border-[3px] border-2 border-transparent hover:border-white hover:bg-transparent hover:text-white border-primary duration-500 flex justify-center items-center gap-4 '
         onClick={handleOnClick}
       >
         {text}
