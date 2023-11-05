@@ -1,10 +1,13 @@
 nav a.active {
-  background-color: #00a9ff;
+  background: linear-gradient(45deg, #3fbefd, #89cff3, #c0b0fc, #aa94f7);
   border-radius: 80px;
   padding: 10px 20px;
   position: relative;
   min-width: 250px;
   color: white;
+}
+nav a.active:hover {
+  background: linear-gradient(45deg, #3fbefd, #89cff3, #c0b0fc, #aa94f7);
 }
 /* custom underline */
 nav a.active::after {

@@ -5,7 +5,7 @@ import bannerAnim from '../../assets/Animation/banner-animation.json';
 import ParticlesBackground from '../ParticlesBackground/ParticlesBackground';
 const Banner = () => {
   return (
-    <section className='xl:px-[8%] xl:py-20 px-[5%] py-10 bg-primary backdrop-blur-xl bg-opacity-[0.75] flex-bet relative'>
+    <section className='xl:px-[8%] xl:py-20 px-[5%] py-10 backdrop-blur-xl bg-opacity-[0.75] flex-bet relative gradient-bg'>
       {/* particles */}
       <div className='absolute top-0 left-0'>
         <ParticlesBackground />
