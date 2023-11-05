@@ -22,7 +22,6 @@ const Footer = () => {
           </button>
           <p
             className='text-[32px] font-bold uppercase'
-            style={{ fontFamily: 'DreamAvenue' }}
           >
             Get in touch
           </p>
@@ -73,7 +72,6 @@ const Footer = () => {
       <div className='w-full lg:h-[650px] bg-gray-400  backdrop-blur-[25px] text-center px-6 py-8 text-white space-y-6 xl:col-span-1 col-span-2'>
         <h2
           className='md:text-[48px] text-[32px] font-medium uppercase'
-          style={{ fontFamily: 'DreamAvenue' }}
         >
           have a question?
         </h2>

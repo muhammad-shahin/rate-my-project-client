@@ -9,7 +9,6 @@ const Heading = ({ title, subTitle, titleColor }) => {
             ? 'text-blue-400 before:bg-blue-400 after:bg-blue-400'
             : 'before:bg-black after:bg-black text-black'
         }`}
-        style={{ fontFamily: 'DreamAvenue' }}
       >
         {title}
       </h1>
