@@ -8,13 +8,21 @@ import {
 import { FaUserGroup } from 'react-icons/fa6';
 
 const iconMapping = {
-  FaTasks: <FaTasks className='md:text-[52px] text-[32px] md:p-2 mx-auto text-white ' />,
-  FaUsers: <FaUsers className='md:text-[52px] text-[32px] md:p-2 mx-auto text-white ' />,
+  FaTasks: (
+    <FaTasks className='md:text-[52px] text-[32px] md:p-2 mx-auto text-white ' />
+  ),
+  FaUsers: (
+    <FaUsers className='md:text-[52px] text-[32px] md:p-2 mx-auto text-white ' />
+  ),
   FaChalkboardTeacher: (
     <FaChalkboardTeacher className='md:text-[52px] text-[32px] md:p-2 mx-auto text-white ' />
   ),
-  FaChartLine: <FaChartLine className='md:text-[52px] text-[32px] md:p-2 mx-auto text-white ' />,
-  FaUserGroup: <FaUserGroup className='md:text-[52px] text-[32px] md:p-2 mx-auto text-white ' />,
+  FaChartLine: (
+    <FaChartLine className='md:text-[52px] text-[32px] md:p-2 mx-auto text-white ' />
+  ),
+  FaUserGroup: (
+    <FaUserGroup className='md:text-[52px] text-[32px] md:p-2 mx-auto text-white ' />
+  ),
 };
 
 const HowItWorksCard = ({ cardData }) => {
@@ -30,6 +38,8 @@ const HowItWorksCard = ({ cardData }) => {
   );
 };
 
-HowItWorksCard.propTypes = {};
+HowItWorksCard.propTypes = {
+  cardData: PropTypes.object,
+};
 
 export default HowItWorksCard;

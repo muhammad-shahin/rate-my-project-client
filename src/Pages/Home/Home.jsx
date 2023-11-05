@@ -4,6 +4,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Banner from '../../Components/Banner/Banner';
 import Heading from '../../ReuseableUI/Heading/Heading';
 import HowItWorks from '../../Components/HowItWorks/HowItWorks';
+import PerformanceCount from '../../Components/PerformanceCount/PerformanceCount';
 
 const Home = () => {
   const { setLoading } = useContext(AuthContext);
@@ -13,10 +14,16 @@ const Home = () => {
       <Banner />
 
       {/* How it works section */}
-      <div>
+      <div className='lg:my-16 my-8'>
         <Heading title='How it Works?' />
         <HowItWorks />
       </div>
+
+      <div className='container mx-auto lg:my-16 my-8'>
+        <Heading title='Our Performance Snapshot' />
+        <PerformanceCount />
+      </div>
+
       {/* <Footer /> */}
     </div>
   );

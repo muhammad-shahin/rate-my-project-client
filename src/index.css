@@ -18,6 +18,9 @@ body {
 .flex-bet {
   @apply flex justify-between items-center;
 }
+.flex-cen {
+  @apply flex justify-center items-center gap-4 flex-wrap;
+}
 
 .round-bg {
   @apply rounded-full p-2 bg-primary bg-opacity-70;
@@ -44,10 +47,14 @@ body {
 
 .gradient-text {
   font-weight: bold;
-  position: relative;
-
-  /* Gradient fill for the text */
-  background: linear-gradient(90deg, #00a9ff, #9c85f0, #4fc2fc, #7852fe);
+  background: linear-gradient(
+    90deg,
+    #00a9ff,
+    #2fa6f0,
+    #4c6ef7,
+    #6554fb,
+    #cd59fc
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
