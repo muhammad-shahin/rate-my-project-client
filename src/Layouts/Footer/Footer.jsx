@@ -59,6 +59,12 @@ const Footer = () => {
           <SocialIcons />
         </div>
       </div>
+      <div className='text-center mt-8 pb-4'>
+        <p className='text-gray-500 text-md'>
+          &copy; Copyright 2021-2023{' '}
+          <span className='text-blue-500'>RATE MY PROJECT</span>
+        </p>
+      </div>
     </footer>
   );
 };

@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
+
 import Banner from '../../Components/Banner/Banner';
 import Heading from '../../ReuseableUI/Heading/Heading';
 import HowItWorks from '../../Components/HowItWorks/HowItWorks';
@@ -12,7 +11,6 @@ import Footer from '../../Layouts/Footer/Footer';
 import GetStartedBanner from '../../Components/Banner/GetStartedBanner';
 
 const Home = () => {
-  const { setLoading } = useContext(AuthContext);
 
   return (
     <div>
