@@ -7,6 +7,7 @@ import PerformanceCount from '../../Components/PerformanceCount/PerformanceCount
 import CoreFeatures from '../../Components/CoreFeatures/CoreFeatures';
 import OverlapImage from '../../ReuseableUI/OverlapImage/OverlapImage';
 import Categories from '../../Components/Categories/Categories';
+import Faq from '../../Components/FAQ/Faq';
 
 const Home = () => {
   const { setLoading } = useContext(AuthContext);
@@ -39,12 +40,18 @@ const Home = () => {
       </div>
 
       {/* improve your section */}
-      <div className='container mx-auto lg:my-28 my-8 lg:block hidden'>
+      <div className='container mx-auto lg:my-28 my-8'>
         <Heading
           title='Category We Have'
           subTitle='Explore Assignment By Category'
         />
         <Categories />
+      </div>
+
+      {/* FAQ section */}
+      <div className='container mx-auto lg:my-28 my-8'>
+        <Heading title='Frequently Asked Question' />
+        <Faq />
       </div>
 
       {/* <Footer /> */}

@@ -1,0 +1,27 @@
+[
+  {
+    "question": "What is the purpose of this website?",
+    "answer": "This website is designed for online group study with friends. You can create, complete, and grade assignments with your study buddies.",
+    "id": 1
+  },
+  {
+    "question": "How do I register an account?",
+    "answer": "You can register by providing your name, email, and password. We also offer social login options like Google and Github.",
+    "id": 2
+  },
+  {
+    "question": "Can I delete assignments created by other users?",
+    "answer": "No, you can only delete assignments that you have created. Assignments created by others are not deletable by you.",
+    "id": 3
+  },
+  {
+    "question": "What happens when I complete an assignment?",
+    "answer": "When you complete an assignment, it will be marked as 'completed' and your performance will be recorded.",
+    "id": 4
+  },
+  {
+    "question": "How can I track my progress?",
+    "answer": "You can monitor your progress using insightful analytics that show assignment completion, study hours, and performance metrics.",
+    "id": 5
+  }
+]

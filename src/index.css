@@ -79,6 +79,11 @@ body {
   }
 }
 
+/* Transition style for accordion */
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}
+
 /* gradient animation */
 
 .gradient-anim:hover {
