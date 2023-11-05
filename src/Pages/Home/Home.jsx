@@ -8,6 +8,7 @@ import CoreFeatures from '../../Components/CoreFeatures/CoreFeatures';
 import OverlapImage from '../../ReuseableUI/OverlapImage/OverlapImage';
 import Categories from '../../Components/Categories/Categories';
 import Faq from '../../Components/FAQ/Faq';
+import Footer from '../../Layouts/Footer/Footer';
 
 const Home = () => {
   const { setLoading } = useContext(AuthContext);
@@ -53,8 +54,8 @@ const Home = () => {
         <Heading title='Frequently Asked Question' />
         <Faq />
       </div>
-
-      {/* <Footer /> */}
+      {/* footer section */}
+      <Footer />
     </div>
   );
 };

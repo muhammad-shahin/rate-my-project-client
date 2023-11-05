@@ -6,7 +6,7 @@ const Accordion = ({ open, toggle, data }) => {
   return (
     <div className='pt-[10px]'>
       <div
-        className='bg-gradient-to-r from-primary to-secondary shadow-2xl lg:px-[50px] px-[25px] lg:py-[25px] py-[15px] flex justify-between items-center cursor-pointer lg:gap-0 gap-3'
+        className='gradient-bg shadow-2xl lg:px-[50px] px-[25px] lg:py-[25px] py-[15px] flex justify-between items-center cursor-pointer lg:gap-0 gap-3'
         onClick={toggle}
       >
         {/* Question or Title */}
