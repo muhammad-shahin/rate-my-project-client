@@ -1,0 +1,42 @@
+[
+  {
+    "frontTitle": "Study Groups",
+    "frontDescription": "Collaborate with friends in study groups to enhance your learning experience. Share knowledge, tackle challenges together, and stay motivated. Learning is more fun with friends.",
+    "frontIcon": "FaUsers",
+    "backTitle": "Real-Time Collaboration",
+    "backDescription": "Engage in real-time collaboration with your study buddies. Discuss assignments, ask questions, and provide feedback instantly. Learning together has never been easier.",
+    "backIcon": "FaComments",
+    "frontImage": "https://i.ibb.co/qy10jf6/flipcard1.jpg",
+    "backImage": "https://i.ibb.co/1QDRKyT/flipcard2.jpg"
+  },
+  {
+    "frontTitle": "Create Assignments",
+    "frontDescription": "Craft and manage assignments effortlessly. Specify tasks, set deadlines, and choose the difficulty level. Take control of your learning journey.",
+    "frontIcon": "FaTasks",
+    "backTitle": "Interactive Learning",
+    "backDescription": "Immerse yourself in an interactive learning environment. Explore dynamic content, quizzes, and engaging study materials. Learning is not just reading; it's experiencing.",
+    "backIcon": "FaPlayCircle",
+    "frontImage": "https://i.ibb.co/99StrhB/flipcard3.jpg",
+    "backImage": "https://i.ibb.co/4s9Bpw2/flipcard4.jpg"
+  },
+  {
+    "frontTitle": "User Profiles",
+    "frontDescription": "Create your personalized user profile and connect with friends. Showcase your achievements, assignments, and stay updated with your study group.",
+    "frontIcon": "FaUser",
+    "backTitle": "Achievements",
+    "backDescription": "Earn badges and achievements as you progress. Compete on the leaderboard and stay motivated to reach new milestones in your learning journey.",
+    "backIcon": "FaMedal",
+    "frontImage": "https://i.ibb.co/bLPq5Zq/flipcard5.jpg",
+    "backImage": "https://i.ibb.co/VmyssPn/flipcard6.jpg"
+  },
+  {
+    "frontTitle": "Responsive Design",
+    "frontDescription": "Access our platform on any device - mobile, tablet, or desktop. Enjoy a seamless learning experience wherever you are.",
+    "frontIcon": "FaMobileAlt",
+    "backTitle": "Community Engagement",
+    "backDescription": "Join a vibrant online community of students and educators. Share insights, seek assistance, and explore a variety of study groups tailored to your interests.",
+    "backIcon": "FaUserFriends",
+    "frontImage": "https://i.ibb.co/xFVMJWn/flipcard7.jpg",
+    "backImage": "https://i.ibb.co/fxg5Q20/flipcard8.jpg"
+  }
+]

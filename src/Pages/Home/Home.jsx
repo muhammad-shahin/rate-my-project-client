@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
-import Footer from '../../Layouts/Footer/Footer';
+import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Banner from '../../Components/Banner/Banner';
 import Heading from '../../ReuseableUI/Heading/Heading';
 import HowItWorks from '../../Components/HowItWorks/HowItWorks';
 import PerformanceCount from '../../Components/PerformanceCount/PerformanceCount';
-import FlipCard from '../../ReuseableUI/FlipCard/FlipCard';
+import CoreFeatures from '../../Components/CoreFeatures/CoreFeatures';
 
 const Home = () => {
   const { setLoading } = useContext(AuthContext);
@@ -15,19 +14,19 @@ const Home = () => {
       <Banner />
 
       {/* How it works section */}
-      <div className='lg:my-16 my-8'>
+      <div className='lg:my-28 my-8'>
         <Heading title='How it Works?' />
         <HowItWorks />
       </div>
 
-      <div className='container mx-auto lg:my-16 my-8'>
+      <div className='container mx-auto lg:my-28 my-8'>
         <Heading title='Our Performance Snapshot' />
         <PerformanceCount />
       </div>
 
-      <div className='container mx-auto lg:my-16 my-8'>
+      <div className='container mx-auto lg:my-28 my-8'>
         <Heading title='Core Features' />
-        <FlipCard />
+        <CoreFeatures />
       </div>
 
       {/* <Footer /> */}

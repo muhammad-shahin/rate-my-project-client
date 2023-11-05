@@ -20,3 +20,12 @@
 .flip-card-back {
   transform: rotateY(180deg);
 }
+
+.bgColor {
+  background-color: black;
+}
+
+.gradient-bg-overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  opacity: 0.85;
+}
