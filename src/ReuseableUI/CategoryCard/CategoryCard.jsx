@@ -12,7 +12,7 @@ const CategoryCard = ({ cardData, icon }) => {
       <p className='md:text-md text-sm  md:font-medium max-w-sm hover:text-slate-100 text-primary duration-500'>
         {categoryDetails}
       </p>
-      <button className='rounded-full px-5 py-2 mx-auto gradient-bg text-[#545353] font-bold gradient-anim'>
+      <button className='rounded-full px-5 py-2 mx-auto gradient-bg text-lightBlack font-bold gradient-anim'>
         View Assignment
       </button>
     </div>

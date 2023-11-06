@@ -17,12 +17,16 @@ const SignUp = () => {
   const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] =
     useState('');
   const [showModal, setShowModal] = useState(false);
+  const [profilePicture, setProfilePicture] = useState('');
 
   // show password regular expression error
-  const handlePasswordChange = (e) => {
+  const handleFieldValueChange = (e, customValue) => {
+    if (e.target.name === 'profilePicture') {
+      setProfilePicture(customValue);
+    }
     if (e.target.name === 'password') {
       setPasswordErrorMessage(passwordErrorChecker(e));
-    } else {
+    } else if (e.target.name === 'confirmPassword') {
       setConfirmPasswordErrorMessage(passwordErrorChecker(e));
     }
   };
@@ -43,6 +47,7 @@ const SignUp = () => {
           console.log(user);
           updateProfile(auth.currentUser, {
             displayName: name,
+            photoURL: profilePicture,
           })
             .then(() => {})
             .catch((error) => {
@@ -87,23 +92,29 @@ const SignUp = () => {
       labelText: 'Your Valid Email',
     },
     {
+      name: 'profilePicture',
+      type: 'file',
+      placeholder: 'Upload Profile Picture',
+      onChange: handleFieldValueChange,
+      labelText: 'Upload Profile Picture',
+    },
+    {
       name: 'password',
       type: 'password',
       placeholder: 'Enter Password',
-      onChange: handlePasswordChange,
+      onChange: handleFieldValueChange,
       errorMessage: passwordErrorMessage,
       labelText: 'Password',
     },
     {
       name: 'confirmPassword',
       type: 'password',
-      placeholder: 'Enter Confirm Password',
-      onChange: handlePasswordChange,
+      placeholder: 'Confirm Password',
+      onChange: handleFieldValueChange,
       errorMessage: confirmPasswordErrorMessage,
       labelText: 'Confirm Password',
     },
   ];
-  console.log(signUpInputFields);
   return (
     <section className=''>
       <Form

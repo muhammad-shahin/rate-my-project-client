@@ -14,6 +14,7 @@ export default {
         purple: '#522B79',
         pink: '#A62E7F',
         gray: '#838383',
+        lightBlack: '#2a2929',
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],

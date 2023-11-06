@@ -32,10 +32,10 @@ const GoogleSignIn = () => {
   return (
     <div>
       <button
-        className='px-5 py-2 hover:bg-blue-500 backdrop-blur-[25px] hover:bg-opacity-[0.69] font-medium text-[18px] hover:text-white uppercase w-full h-full cursor-pointer rounded bg-transparent border-2 hover:border-transparent text-blue-500 border-blue-500 duration-500 flex justify-center items-center gap-3'
+        className='lg:px-5 py-2 px-2 hover:bg-opacity-[0.69] font-medium text-[13px] md:text-[18px] hover:text-lightBlack uppercase w-full h-full cursor-pointer rounded bg-transparent border-2 hover:border-transparent text-primary border-primary duration-500 flex justify-center items-center gap-3  gradient-anim'
         onClick={handleGoogleSignIn}
       >
-        <FcGoogle className='text-[26px]' />
+        <FcGoogle className='md:text-[26px] text-[18px]' />
         Continue With Google
       </button>
     </div>

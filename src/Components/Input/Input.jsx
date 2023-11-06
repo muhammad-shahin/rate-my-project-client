@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { AiFillEye } from 'react-icons/ai';
+import FileUpload from '../FileUpload/FileUpload';
 const Input = ({
   name,
   type,
@@ -11,6 +12,16 @@ const Input = ({
   onBlur,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
+  if (type === 'file') {
+    return (
+      <FileUpload
+        label={labelText}
+        isRequired={false}
+        handleChange={onChange}
+        name={name}
+      />
+    );
+  }
   return (
     <div className='w-[100%] relative'>
       <label className='text-[14px] font-medium'>

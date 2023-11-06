@@ -18,13 +18,10 @@ const Form = ({
   extraButtonOnClick,
 }) => {
   return (
-    <div
-      className=' bg-blue-300 dark:bg-[#07031d] backdrop-blur-[50px] bg-opacity-[0.49] font-medium text-[18px] text- uppercase w-[100%] min-h-[90vh] flex justify-center items-center px-[5%] rounded'
-      style={{ fontFamily: 'Quicksand' }}
-    >
-      <div className=' container mx-auto w-fit grid lg:grid-cols-2 grid-cols-1 shadow-sm shadow-blue-500 my-8'>
+    <div className=' bg-blue-300 dark:bg-[#07031d] backdrop-blur-[50px] bg-opacity-[0.49] font-medium text-[18px] text- uppercase w-[100%] min-h-[90vh] flex justify-center items-center px-[5%] rounded'>
+      <div className=' container mx-auto w-fit grid lg:grid-cols-2 grid-cols-1 shadow-xl my-8'>
         {/* left side content */}
-        <div className='w-full lg: px-8 lg:px-28 py-10 bg-white dark:bg-gray-400 rounded lg:rounded-l'>
+        <div className='w-full flex-1 px-8 xl:px-28 py-10 bg-white dark:bg-gray-400 rounded lg:rounded-l'>
           <h1 className='lg:text-[32px] text-[24px] font-medium uppercase lg:mb-10 mb-3'>
             {title}
           </h1>
@@ -54,7 +51,7 @@ const Form = ({
               </button>
             )}
             <input
-              className='px-5 py-2 bg-blue-500 backdrop-blur-[25px] bg-opacity-[0.69] font-medium text-[18px] text-white uppercase w-full h-full cursor-pointer rounded hover:bg-transparent border-2 border-transparent hover:text-blue-500 hover:border-blue-500 duration-500'
+              className='px-5 py-2 bg-primary backdrop-blur-[25px] bg-opacity-[0.69] font-medium text-[18px] text-lightBlack uppercase w-full h-full cursor-pointer rounded hover:bg-transparent border-2 border-transparent hover:border-primary duration-500 gradient-bg gradient-anim'
               type='submit'
               value={submitText}
             />
@@ -65,7 +62,7 @@ const Form = ({
                 {bottomText}{' '}
                 <Link
                   to={bottomLink}
-                  className='text-blue-500 underline'
+                  className='text-primary underline'
                 >
                   {bottomLinkText}
                 </Link>
@@ -83,7 +80,7 @@ const Form = ({
         </div>
 
         {/* right side content */}
-        <div className='max-w-[650px]  px-14 py-10 bg-blue-400 rounded-r hidden lg:flex justify-center items-center'>
+        <div className='px-14 py-10 gradient-bg rounded-r hidden lg:flex justify-center items-center'>
           <Lottie
             loop
             animationData={lottieAnimation}
