@@ -56,7 +56,6 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-align: center;
 }
 .gradient-btn {
   background: linear-gradient(45deg, #4c6ffa, rgb(130, 71, 240));
