@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import GlassButton from '../../ReuseableUI/GlassButton/GlassButton';
+import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
 
 const GetStartedBanner = ({ title = '', children }) => {
   return (
@@ -7,7 +7,7 @@ const GetStartedBanner = ({ title = '', children }) => {
       <h3 className='lg:text-7xl text-4xl font-semibold text-white max-w-5xl'>
         {title}
       </h3>
-      <GlassButton text='Join Now' />
+      <PrimaryButton text='Join Now' />
       {children}
     </div>
   );

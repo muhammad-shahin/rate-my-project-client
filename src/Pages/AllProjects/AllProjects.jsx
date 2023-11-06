@@ -1,12 +1,18 @@
-import { AiOutlineSmile, AiOutlineMeh, AiOutlineFrown } from 'react-icons/ai';
-import { SlCalender } from 'react-icons/sl';
+import {
+  AiOutlineSmile,
+  AiOutlineMeh,
+  AiOutlineFrown,
+  AiOutlinePlus,
+} from 'react-icons/ai';
+import { SlCalender, SlActionRedo } from 'react-icons/sl';
 import { BiCategory } from 'react-icons/bi';
+import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
 
 const AllProjects = () => {
   return (
     <div className='flex justify-start items-center my-10 container mx-auto'>
       {/* card for showing the projects  */}
-      <div className='p-5 rounded-lg border-2 border-primary bg-slate-100 shadow-xl max-w-[550px]'>
+      <div className='p-5 rounded-lg border-2 border-primary bg-slate-100 shadow-xl max-w-[470px]'>
         {/* project thumbnail */}
         <div className=''>
           <img
@@ -18,6 +24,7 @@ const AllProjects = () => {
 
         {/* project contetnt */}
         <div className='mt-6 space-y-4'>
+          {/* title & description */}
           <h2 className='lg:text-2xl text-lg font-semibold gradient-text uppercase'>
             React Quiz Application Using Node JS
           </h2>
@@ -27,6 +34,7 @@ const AllProjects = () => {
             learning journey. deadlines, and choose the difficulty level. Take
             control of your learning journey.
           </p>
+
           <div className='flex justify-between'>
             {/* difficulty level */}
             <div>
@@ -40,7 +48,6 @@ const AllProjects = () => {
                 Hard
               </button>
             </div>
-
             {/* due date */}
             <div>
               <p className='gradient-text font-medium text-center'>Due Date</p>
@@ -50,7 +57,6 @@ const AllProjects = () => {
                 <SlCalender className='text-[22px]' />6 Nov, 2023
               </button>
             </div>
-
             {/* category */}
             <div>
               <p className='gradient-text font-medium text-center'>Category</p>
@@ -61,6 +67,18 @@ const AllProjects = () => {
                 Web Dev
               </button>
             </div>
+          </div>
+
+          {/* actions buttons */}
+          <div className='flex-bet'>
+            <PrimaryButton
+              text='Take Course'
+              icon={<AiOutlinePlus />}
+            />
+            <PrimaryButton
+              text='View Details'
+              icon={<SlActionRedo />}
+            />
           </div>
         </div>
       </div>

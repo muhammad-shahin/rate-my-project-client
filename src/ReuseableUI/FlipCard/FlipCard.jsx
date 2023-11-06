@@ -100,7 +100,7 @@ const FlipCard = ({ cardData }) => {
   return (
     <div className='flex-cen'>
       <div
-        className='flip-card lg:w-[450px] xl:w-[600px] w-[320px] lg:h-[360px] h-[250px] rounded-md'
+        className='flip-card sm:w-[375px] lg:w-[450px] xl:w-[600px] w-[320px] px-[5%] md:px-0 lg:h-[360px] h-[280px] rounded-md'
         onClick={handleFlip}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

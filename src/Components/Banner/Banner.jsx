@@ -1,4 +1,4 @@
-import GlassButton from '../../ReuseableUI/GlassButton/GlassButton';
+import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
 import OutlineButton from '../../ReuseableUI/OutlineButton/OutlineButton';
 import Lottie from 'lottie-react';
 import bannerAnim from '../../assets/Animation/banner-animation.json';
@@ -23,7 +23,7 @@ const Banner = () => {
           and achieve academic success, all in one place.
         </p>
         <div className='flexme '>
-          <GlassButton text='Get Started' />
+          <PrimaryButton text='Get Started' />
           <OutlineButton text='Learn More' />
         </div>
       </div>
