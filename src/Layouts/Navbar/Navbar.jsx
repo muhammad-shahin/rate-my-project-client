@@ -80,7 +80,7 @@ const Navbar = () => {
               setOpen(false);
             }}
           >
-            <NavLink to='/all-assignment'>All Assignment</NavLink>
+            <NavLink to='/all-projects'>All Assignment</NavLink>
           </li>
           <li
             className='text-black dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'

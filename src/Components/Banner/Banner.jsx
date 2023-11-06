@@ -12,7 +12,7 @@ const Banner = () => {
         <ParticlesBackground />
       </div>
       {/* left side */}
-      <div className='capitalize text-white space-y-6'>
+      <div className='capitalize text-white space-y-6 relative'>
         <h1 className='font-semibold text-2xl w-full lg:text-6xl lg:max-w-3xl'>
           Unlock Your Academic Potential: Transform Your Study Experience with
           Collaborative Learning
@@ -29,7 +29,7 @@ const Banner = () => {
       </div>
 
       {/* right side */}
-      <div className='hidden lg:block'>
+      <div className='hidden lg:block relative'>
         <Lottie
           loop
           animationData={bannerAnim}

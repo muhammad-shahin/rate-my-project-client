@@ -1,4 +1,5 @@
 import Root from '../Layouts/Root/Root';
+import AllProjects from '../Pages/AllProjects/AllProjects';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
@@ -21,6 +22,10 @@ const routes = [
       {
         path: '/login',
         element: <Login />,
+      },
+      {
+        path: '/all-projects',
+        element: <AllProjects />,
       },
     ],
   },

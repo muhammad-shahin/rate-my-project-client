@@ -62,7 +62,7 @@ const FileUpload = ({ name, label, handleChange, isRequired, message }) => {
       </p>
       <label
         htmlFor='fileInput'
-        className={`w-full border-dashed border-2 bg-transparent lg:px-4 px-2 py-2 rounded-md cursor-pointer border-primary block text-center text-[14px]`}
+        className={`w-full border-dashed border-2 bg-transparent lg:px-4 px-2 py-2 rounded-md cursor-pointer border-primary block text-center text-[14px] md:text-[18px]`}
       >
         {label}
       </label>

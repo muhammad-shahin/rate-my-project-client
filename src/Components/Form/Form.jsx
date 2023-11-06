@@ -3,6 +3,7 @@ import Input from '../Input/Input';
 import Lottie from 'lottie-react';
 import { Link } from 'react-router-dom';
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
+import ParticlesBackground from '../ParticlesBackground/ParticlesBackground';
 
 const Form = ({
   title,
@@ -18,10 +19,14 @@ const Form = ({
   extraButtonOnClick,
 }) => {
   return (
-    <div className=' bg-blue-300 dark:bg-[#07031d] backdrop-blur-[50px] bg-opacity-[0.49] font-medium text-[18px] text- uppercase w-[100%] min-h-[90vh] flex justify-center items-center px-[5%] rounded'>
-      <div className=' container mx-auto w-fit grid lg:grid-cols-2 grid-cols-1 shadow-xl my-8'>
+    <div className=' gradient-bg dark:bg-[#07031d] backdrop-blur-[50px] bg-opacity-[0.49] font-medium text-[18px] text- uppercase w-[100%] min-h-[90vh] flex justify-center items-center px-[5%] rounded relative'>
+      {/* particles */}
+      <div className='absolute top-0 left-0'>
+        <ParticlesBackground />
+      </div>
+      <div className=' container mx-auto w-fit grid lg:grid-cols-2 grid-cols-1 shadow-xl my-8 relative '>
         {/* left side content */}
-        <div className='w-full flex-1 px-8 xl:px-28 py-10 bg-white dark:bg-gray-400 rounded lg:rounded-l'>
+        <div className='w-full flex-1 px-4 md:px-8 xl:px-28 py-10 bg-white dark:bg-gray-400 rounded lg:rounded-l'>
           <h1 className='lg:text-[32px] text-[24px] font-medium uppercase lg:mb-10 mb-3'>
             {title}
           </h1>
@@ -58,7 +63,7 @@ const Form = ({
           </form>
           {loginSignUpForm && (
             <div>
-              <p className='text-[18px] font-medium text-center mt-4'>
+              <p className='text-[14px] md:text-[18px] font-medium text-center mt-4'>
                 {bottomText}{' '}
                 <Link
                   to={bottomLink}
@@ -80,7 +85,7 @@ const Form = ({
         </div>
 
         {/* right side content */}
-        <div className='px-14 py-10 gradient-bg rounded-r hidden lg:flex justify-center items-center'>
+        <div className='px-14 py-10 bg-secondary rounded-r hidden lg:flex justify-center items-center'>
           <Lottie
             loop
             animationData={lottieAnimation}
