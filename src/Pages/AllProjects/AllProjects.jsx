@@ -57,14 +57,14 @@ const AllProjects = () => {
             control of your learning journey.
           </p>
 
-          <div className='flex md:justify-between flex-wrap justify-center items-center gap-1 md:gap-0'>
+          <div className='flex md:justify-between flex-wrap justify-center items-center gap-1 lg:gap-2 md:gap-0'>
             {/* difficulty level */}
             <div>
               <p className='gradient-text md:font-medium text-center'>
                 Diffculty Level
               </p>
               <button
-                className={`round-btn bg-red-500 flex justify-center items-center gap-1`}
+                className={`round-btn bg-red-500 flex justify-center items-center gap-1 lg:gap-2`}
               >
                 <AiOutlineFrown className='md:text-[26px]' />
                 Hard
@@ -76,7 +76,7 @@ const AllProjects = () => {
                 Due Date
               </p>
               <button
-                className={`round-btn bg-primary flex justify-center items-center gap-1`}
+                className={`round-btn bg-primary flex justify-center items-center gap-1 lg:gap-2`}
               >
                 <SlCalender className='md:text-[22px]' />6 Nov, 2023
               </button>
@@ -87,7 +87,7 @@ const AllProjects = () => {
                 Category
               </p>
               <button
-                className={`round-btn bg-tertiary flex justify-center items-center gap-1`}
+                className={`round-btn bg-tertiary flex justify-center items-center gap-1 lg:gap-2`}
               >
                 <BiCategory className='md:text-[22px]' />
                 Web Dev
