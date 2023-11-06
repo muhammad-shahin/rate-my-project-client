@@ -88,7 +88,7 @@ const Navbar = () => {
               setOpen(false);
             }}
           >
-            <NavLink to='/create-assignment'>Create Assignment</NavLink>
+            <NavLink to='/create-project'>Create Assignment</NavLink>
           </li>
           {user ? (
             ''

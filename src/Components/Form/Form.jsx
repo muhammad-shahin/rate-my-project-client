@@ -6,6 +6,7 @@ import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import ParticlesBackground from '../ParticlesBackground/ParticlesBackground';
 
 const Form = ({
+  children,
   title,
   inputFields,
   submitText,
@@ -26,12 +27,12 @@ const Form = ({
       </div>
       <div className=' container mx-auto w-fit grid lg:grid-cols-2 grid-cols-1 shadow-xl my-8 relative '>
         {/* left side content */}
-        <div className='w-full flex-1 px-4 md:px-8 xl:px-28 py-10 bg-white dark:bg-gray-400 rounded lg:rounded-l'>
+        <div className='w-full flex-1 px-4 md:px-8 xl:px-20 py-10 bg-white dark:bg-gray-400 rounded lg:rounded-l'>
           <h1 className='lg:text-[32px] text-[24px] font-medium uppercase lg:mb-10 mb-3'>
             {title}
           </h1>
           <form
-            className='flex flex-col justify-center items-start gap-4 lg:gap-10'
+            className='flex flex-col justify-center items-start gap-4 lg:gap-6'
             onSubmit={handleFormSubmit}
           >
             {inputFields.map((fields, index) => (
@@ -44,6 +45,9 @@ const Form = ({
                 onBlur={fields.onBlur}
                 errorMessage={fields.errorMessage}
                 labelText={fields.labelText}
+                isRequired={fields.isRequired}
+                defaultOption={fields.defaultOption}
+                optionsData={fields.optionsData}
               />
             ))}
 
@@ -86,10 +90,13 @@ const Form = ({
 
         {/* right side content */}
         <div className='px-14 py-10 bg-secondary rounded-r hidden lg:flex justify-center items-center'>
-          <Lottie
-            loop
-            animationData={lottieAnimation}
-          />
+          {lottieAnimation && (
+            <Lottie
+              loop
+              animationData={lottieAnimation}
+            />
+          )}
+          {children}
         </div>
       </div>
     </div>
@@ -108,6 +115,7 @@ Form.propTypes = {
   bottomText: PropTypes.string,
   bottomLinkText: PropTypes.string,
   bottomLink: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default Form;

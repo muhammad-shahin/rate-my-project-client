@@ -80,16 +80,18 @@ const SignUp = () => {
   };
   const signUpInputFields = [
     {
-      name: 'text',
-      type: 'name',
+      name: 'name',
+      type: 'text',
       placeholder: 'Enter Full Name',
       labelText: 'Enter Full Name',
+      isRequired: true,
     },
     {
       name: 'email',
       type: 'email',
       placeholder: 'Enter Email',
       labelText: 'Your Valid Email',
+      isRequired: true,
     },
     {
       name: 'profilePicture',
@@ -97,6 +99,7 @@ const SignUp = () => {
       placeholder: 'Upload Profile Picture',
       onChange: handleFieldValueChange,
       labelText: 'Upload Profile Picture',
+      isRequired: false,
     },
     {
       name: 'password',
@@ -105,6 +108,7 @@ const SignUp = () => {
       onChange: handleFieldValueChange,
       errorMessage: passwordErrorMessage,
       labelText: 'Password',
+      isRequired: true,
     },
     {
       name: 'confirmPassword',
@@ -113,6 +117,7 @@ const SignUp = () => {
       onChange: handleFieldValueChange,
       errorMessage: confirmPasswordErrorMessage,
       labelText: 'Confirm Password',
+      isRequired: true,
     },
   ];
   return (

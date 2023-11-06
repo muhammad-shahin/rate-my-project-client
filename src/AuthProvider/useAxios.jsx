@@ -16,7 +16,6 @@ const useAxios = (navigate) => {
         return res;
       },
       (error) => {
-        console.log('Axios interceptors error : ', error);
         console.log(
           'Axios interceptors error status code: ',
           error.request.status

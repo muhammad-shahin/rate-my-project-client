@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { AiFillEye } from 'react-icons/ai';
 import FileUpload from '../FileUpload/FileUpload';
+import SelectOptions from '../../ReuseableUI/SelectOptions/SelectOptions';
+import TextBox from '../../ReuseableUI/TextBox/TextBox';
+import DatePicker from '../../ReuseableUI/DatePicker/DatePicker';
 const Input = ({
   name,
   type,
@@ -10,32 +13,76 @@ const Input = ({
   errorMessage,
   labelText,
   onBlur,
+  optionsData,
+  defaultOption = 'Select Option',
+  isRequired,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   if (type === 'file') {
     return (
       <FileUpload
         label={labelText}
-        isRequired={false}
+        isRequired={isRequired}
         handleChange={onChange}
         name={name}
       />
     );
   }
+  if (type === 'select') {
+    return (
+      <SelectOptions
+        label={labelText}
+        isRequired={isRequired}
+        handleChange={onChange}
+        name={name}
+        optionsData={optionsData}
+        defaultOption={defaultOption}
+      />
+    );
+  }
+  if (type === 'textbox') {
+    return (
+      <TextBox
+        label={labelText}
+        isRequired={isRequired}
+        handleChange={onChange}
+        name={name}
+        placeholder={placeholder}
+      />
+    );
+  }
+  if (type === 'calendar') {
+    return (
+      <DatePicker
+        name={name}
+        label={labelText}
+        type={type}
+        isRequired={isRequired}
+        handleChange={onChange}
+        placeholder={placeholder}
+      />
+    );
+  }
   return (
     <div className='w-[100%] relative'>
-      <label className='text-[14px] font-medium'>
+      <label
+        htmlFor={name}
+        className='text-[14px] font-medium'
+      >
         {labelText}{' '}
-        {labelText && <span className='text-red-600 text-[18px]'>*</span>}{' '}
+        {isRequired && labelText && (
+          <span className='text-red-600 text-[22px] font-medium'>*</span>
+        )}{' '}
       </label>
       <input
-        className='w-[100%] border-2 border-gray-200 px-5 py-2 text-[18px] font-medium text-[#000] placeholder:text-[#959292] placeholder:text-[16px] rounded outline-2 outline-blue-300'
+        className='w-[100%] border-2 border-gray px-5 py-2 text-[18px] font-medium text-[#000] placeholder:text-gray placeholder:text-[16px] rounded outline-2 outline-secondary'
         type={showPassword ? 'text' : type}
         name={name}
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}
-        required
+        required={isRequired}
+        id={name}
       />
       {type === 'password' && (
         <AiFillEye
@@ -63,6 +110,9 @@ Input.propTypes = {
   labelText: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  optionsData: PropTypes.array,
+  defaultOption: PropTypes.string,
+  isRequired: PropTypes.bool,
 };
 
 export default Input;

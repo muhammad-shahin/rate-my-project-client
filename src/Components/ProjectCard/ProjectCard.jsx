@@ -5,7 +5,7 @@ import {
   AiOutlinePlus,
 } from 'react-icons/ai';
 import { SlCalender, SlActionRedo } from 'react-icons/sl';
-import { BiCategory } from 'react-icons/bi';
+import { BiCategory, BiMedal } from 'react-icons/bi';
 import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
 import PropTypes from 'prop-types';
 
@@ -20,6 +20,7 @@ const ProjectCard = ({ projectData }) => {
     diffcultyLevel,
     dueDate,
     category,
+    totalMarks,
   } = projectData;
   return (
     <div className='flex justify-start items-center my-10 container mx-auto'>
@@ -29,7 +30,7 @@ const ProjectCard = ({ projectData }) => {
         <div className=''>
           <img
             className='rounded-lg object-cover'
-            src='https://i.ibb.co/1QDRKyT/flipcard2.jpg'
+            src={projectThumbnail}
             loading='lazy'
           />
         </div>
@@ -41,7 +42,7 @@ const ProjectCard = ({ projectData }) => {
           </div>
           <div className='flex justify-center items-center gap-2 py-3'>
             <img
-              src='https://i.ibb.co/LvsQCJY/addidas-tshirt-joggers.jpg'
+              src={creatorPhotoUrl}
               className='sm:w-[50px] md:w-[60px] w-[40px] rounded-full object-cover'
               loading='lazy'
             />
@@ -62,7 +63,7 @@ const ProjectCard = ({ projectData }) => {
           </h2>
           <p className='text-center'>{projectDescription.slice(0, 100)}</p>
 
-          <div className='flex md:justify-between flex-wrap justify-center items-center gap-1 lg:gap-2 md:gap-0'>
+          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-8 md:gap-0'>
             {/* difficulty level */}
             <div>
               <p className='gradient-text md:font-medium text-center'>
@@ -100,6 +101,20 @@ const ProjectCard = ({ projectData }) => {
               >
                 <SlCalender className='md:text-[22px]' />
                 {dueDate}
+              </button>
+            </div>
+          </div>
+          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-8 md:gap-0'>
+            {/* total marks */}
+            <div>
+              <p className='gradient-text md:font-medium text-center'>
+                Total Marks
+              </p>
+              <button
+                className={`round-btn sm:min-w-[150px] bg-tertiary flex justify-center items-center gap-1 lg:gap-2`}
+              >
+                <BiMedal className='md:text-[22px]' />
+                {totalMarks} Marks
               </button>
             </div>
             {/* category */}

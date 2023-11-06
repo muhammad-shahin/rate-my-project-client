@@ -28,7 +28,7 @@ const FileUpload = ({ name, label, handleChange, isRequired, message }) => {
     if (!file) return;
     setError(null);
     setSuccess(`Uploading... ${name} Please Wait`);
-    setDisableUpload(true);
+    setDisableUpload(false);
     const randomNumber = Math.floor(Math.random() * 100);
     const imageRef = ref(storage, `RMP/profilePictures/${randomNumber}${name}`);
     uploadBytes(imageRef, file).then((snapshot) => {
@@ -45,7 +45,6 @@ const FileUpload = ({ name, label, handleChange, isRequired, message }) => {
         });
     });
   };
-  console.log(uploadedImageUrl);
   useEffect(() => {
     if (event && uploadedImageUrl) {
       handleChange(event, uploadedImageUrl);
@@ -56,13 +55,13 @@ const FileUpload = ({ name, label, handleChange, isRequired, message }) => {
     <div className='flex flex-col justify-start items-start gap-2 w-full'>
       <p className='text-[14px] font-medium'>
         {label}{' '}
-        {isRequired && label && (
-          <span className='text-red-600 text-[22px] font-medium'>*</span>
+        {label && isRequired && (
+          <span className='text-red-600 text-[18px]'>*</span>
         )}{' '}
       </p>
       <label
         htmlFor='fileInput'
-        className={`w-full border-dashed border-2 bg-transparent lg:px-4 px-2 py-2 rounded-md cursor-pointer border-primary block text-center text-[14px] md:text-[18px]`}
+        className={`w-full border-dashed border-2 bg-transparent lg:px-4 px-2 py-2 rounded-md cursor-pointer border-gray block text-center text-[14px] md:text-[18px]`}
       >
         {label}
       </label>
@@ -70,7 +69,7 @@ const FileUpload = ({ name, label, handleChange, isRequired, message }) => {
         type='file'
         id='fileInput'
         name={name}
-        className='hidden'
+        className='scale-0 absolute'
         accept='image/*'
         onChange={handleFileChange}
         required={isRequired}

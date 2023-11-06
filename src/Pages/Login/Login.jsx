@@ -73,6 +73,7 @@ const Login = () => {
       type: 'email',
       placeholder: 'Enter Email',
       labelText: 'Your Valid Email',
+      isRequired: true,
     },
     {
       name: 'password',
@@ -81,6 +82,7 @@ const Login = () => {
       onChange: handlePasswordChange,
       errorMessage: passwordErrorMessage,
       labelText: 'Password',
+      isRequired: true,
     },
   ];
   return (

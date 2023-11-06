@@ -119,3 +119,8 @@ body {
     background-position: 0% 100%;
   }
 }
+
+/* date type */
+input[type='date']::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
