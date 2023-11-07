@@ -34,7 +34,7 @@ const routes = [
         element: <AllProjects />,
       },
       {
-        path: '/project-details',
+        path: '/project-details/:projectId',
         element: <ProjectDetails />,
       },
     ],

@@ -8,8 +8,10 @@ import { SlCalender, SlActionRedo } from 'react-icons/sl';
 import { BiCategory, BiMedal } from 'react-icons/bi';
 import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 const ProjectCard = ({ projectData }) => {
+  const navigate = useNavigate();
   const {
     projectTitle,
     projectDescription,
@@ -21,9 +23,10 @@ const ProjectCard = ({ projectData }) => {
     dueDate,
     category,
     totalMarks,
+    _id,
   } = projectData;
   return (
-    <div className='flex justify-start items- my-10 container mx-auto'>
+    <div className='my-10'>
       {/* card for showing the projects  */}
       <div className='p-5 rounded-lg border-2 border-primary bg-slate-100 shadow-xl max-w-[470px] dark:bg-[#2d343c]'>
         {/* project thumbnail */}
@@ -133,10 +136,12 @@ const ProjectCard = ({ projectData }) => {
           {/* actions buttons */}
           <div className='flex-bet gap-2 md:gap-0'>
             <PrimaryButton
+              handleOnClick={() => navigate(`/project-details/${_id}`)}
               text='Take Assignment'
               icon={<AiOutlinePlus />}
             />
             <PrimaryButton
+              handleOnClick={() => navigate(`/project-details/${_id}`)}
               text='View Details'
               icon={<SlActionRedo />}
             />
