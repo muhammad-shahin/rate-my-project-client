@@ -159,7 +159,7 @@ const Navbar = () => {
           />
         </div>
       </nav>
-      <hr className='text-primaryColor' />
+      <hr className='text-primaryColor dark:text-primary' />
     </header>
   );
 };

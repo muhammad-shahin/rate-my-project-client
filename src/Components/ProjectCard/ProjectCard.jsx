@@ -8,11 +8,8 @@ import { SlCalender, SlActionRedo } from 'react-icons/sl';
 import { BiCategory, BiMedal } from 'react-icons/bi';
 import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const ProjectCard = ({ projectData }) => {
-  const { user } = useContext(AuthContext);
   const {
     projectTitle,
     projectDescription,
@@ -26,13 +23,13 @@ const ProjectCard = ({ projectData }) => {
     totalMarks,
   } = projectData;
   return (
-    <div className='flex justify-start items-center my-10 container mx-auto'>
+    <div className='flex justify-start items- my-10 container mx-auto'>
       {/* card for showing the projects  */}
-      <div className='p-5 rounded-lg border-2 border-primary bg-slate-100 shadow-xl max-w-[470px]'>
+      <div className='p-5 rounded-lg border-2 border-primary bg-slate-100 shadow-xl max-w-[470px] dark:bg-[#2d343c]'>
         {/* project thumbnail */}
         <div className=''>
           <img
-            className='rounded-lg object-cover'
+            className='rounded-lg object-cover mx-auto lg:h-[300px] h-[200px]'
             src={projectThumbnail}
             loading='lazy'
           />
@@ -64,7 +61,9 @@ const ProjectCard = ({ projectData }) => {
           <h2 className='lg:text-2xl text-lg font-semibold gradient-text uppercase text-center'>
             {projectTitle}
           </h2>
-          <p className='text-center'>{projectDescription.slice(0, 100)}</p>
+          <p className='text-center dark:text-white'>
+            {projectDescription.slice(0, 120)}...
+          </p>
 
           <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-8 md:gap-0'>
             {/* difficulty level */}
@@ -79,17 +78,15 @@ const ProjectCard = ({ projectData }) => {
                   difficultyLevel === 'Easy' && 'bg-green-500'
                 }`}
               >
-                {
-                  (difficultyLevel === 'Hard' && (
-                    <AiOutlineFrown className='md:text-[26px]' />
-                  ),
-                  difficultyLevel === 'Medium' && (
-                    <AiOutlineMeh className='md:text-[26px]' />
-                  ),
-                  difficultyLevel === 'Easy' && (
-                    <AiOutlineSmile className='md:text-[26px]' />
-                  ))
-                }
+                {difficultyLevel === 'Hard' && (
+                  <AiOutlineFrown className='md:text-[26px]' />
+                )}
+                {difficultyLevel === 'Medium' && (
+                  <AiOutlineMeh className='md:text-[26px]' />
+                )}
+                {difficultyLevel === 'Easy' && (
+                  <AiOutlineSmile className='md:text-[26px]' />
+                )}
 
                 {difficultyLevel}
               </button>

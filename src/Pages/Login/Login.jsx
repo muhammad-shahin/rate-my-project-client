@@ -7,7 +7,7 @@ import Modal from '../../Services/Utility/Modal';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Form from '../../Components/Form/Form';
 import loginAnim from '../../assets/Animation/loginAnimation.json';
-import useAxios from '../../AuthProvider/useAxios';
+import useAxios from '../../Hooks/useAxios';
 
 const Login = () => {
   const secureAxios = useAxios();

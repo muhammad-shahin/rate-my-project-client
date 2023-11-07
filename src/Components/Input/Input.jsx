@@ -17,6 +17,7 @@ const Input = ({
   optionsData,
   defaultOption = 'Select Option',
   isRequired,
+  clearValue,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   if (type === 'file') {
@@ -73,6 +74,7 @@ const Input = ({
         isRequired={isRequired}
         handleChange={onChange}
         placeholder={placeholder}
+        clearValue={clearValue}
       />
     );
   }
@@ -126,6 +128,7 @@ Input.propTypes = {
   optionsData: PropTypes.array,
   defaultOption: PropTypes.string,
   isRequired: PropTypes.bool,
+  clearValue: PropTypes.bool,
 };
 
 export default Input;

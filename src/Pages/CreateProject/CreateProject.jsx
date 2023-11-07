@@ -2,9 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 import Form from '../../Components/Form/Form';
 import ProjectCard from '../../Components/ProjectCard/ProjectCard';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useAxios from '../../Hooks/useAxios';
+import Swal from 'sweetalert2';
 
 const CreateProject = () => {
+  const secureAxios = useAxios();
   const { user } = useContext(AuthContext);
+
+  const [clearRichTextBox, setClearRichTextBox] = useState(false);
   // Load the data from local storage when the component mounts
   useEffect(() => {
     const storedData = localStorage.getItem('createProjectData');
@@ -13,8 +18,8 @@ const CreateProject = () => {
     }
   }, []);
   const [createProjectData, setCreateProjectData] = useState({
-    projectTitle: 'This is Sample Title',
-    projectDescription: '',
+    projectTitle: 'Your Title Will Add Here',
+    projectDescription: 'Your Description Will Add Here',
     projectThumbnail:
       'https://i.ibb.co/82MWGSQ/Your-Thumbnail-Will-Add-Here.png',
     difficultyLevel: 'Easy',
@@ -25,10 +30,36 @@ const CreateProject = () => {
     creatorEmail: user?.email,
     creatorPhotoUrl: user?.photoURL,
   });
-  const handleCreateProject = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
     console.log(createProjectData);
-    
+    secureAxios
+      .post('/projects', createProjectData)
+      .then((res) => {
+        console.log(res);
+        if (res.data.acknowledged) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Assignment Created Successfully',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          form.reset();
+          setClearRichTextBox(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Failed to Create Asignment! Try Again',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
   useEffect(() => {
     localStorage.setItem(
@@ -137,19 +168,43 @@ Use Heading, Bullet Points so that participant can understand your assignment be
       onChange: handleFieldValueChange,
       labelText: 'Write Assignment Requirements',
       isRequired: false,
+      clearValue: clearRichTextBox,
     },
   ]);
+  useEffect(() => {
+    if (clearRichTextBox) {
+      // Manually clear the RichTextBox by updating the fields
+      const newProjectCreationFields = projectCreationFields.map((field) => {
+        if (field.name === 'requirements') {
+          // Replace the old 'requirements' field with a new one
+          return {
+            name: 'requirements',
+            type: 'richtextbox',
+            placeholder: `Write Details Assignment Requirements.
+            Use Heading, Bullet Points so that participants can understand your assignment better`,
+            onChange: handleFieldValueChange,
+            labelText: 'Write Assignment Requirements',
+            isRequired: false,
+          };
+        }
+        return field; // Keep the other fields as they are
+      });
+
+      setProjectCreationFields(newProjectCreationFields);
+      setClearRichTextBox(false);
+    }
+  }, [clearRichTextBox]);
   return (
     <div className=''>
       <Form
         title='Create A New Assignment'
         inputFields={projectCreationFields}
         submitText={'Create Assignment'}
-        handleFormSubmit={handleCreateProject}
+        handleFormSubmit={handleFormSubmit}
         loginSignUpForm={false}
       >
         <div className='sticky'>
-          <h4 className='lg:text-3xl font-bold text-center max-w-[450px]'>
+          <h4 className='lg:text-3xl font-bold text-center max-w-[450px] text-lightBlack'>
             Live Preview Of Assignment Card
           </h4>
           <ProjectCard projectData={createProjectData} />

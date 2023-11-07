@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -6,18 +6,24 @@ import 'react-quill/dist/quill.snow.css';
 const RichTextBox = ({
   label,
   name,
-  value,
   handleChange,
   isRequired,
   message,
   placeholder,
+  clearValue,
 }) => {
-  const [richTextValue, setRichTextValue] = useState(value);
+  const [richTextValue, setRichTextValue] = useState('');
 
   const handleRichTextChange = (content) => {
     setRichTextValue(content);
     handleChange(null, name, content);
   };
+  // Use useEffect to clear the value when clearValue prop changes
+  useEffect(() => {
+    if (clearValue) {
+      setRichTextValue('');
+    }
+  }, [clearValue]);
 
   return (
     <div className='flex flex-col gap-1 w-full'>
@@ -46,11 +52,11 @@ const RichTextBox = ({
 RichTextBox.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string,
   handleChange: PropTypes.func,
   isRequired: PropTypes.bool,
   message: PropTypes.string,
   placeholder: PropTypes.string,
+  clearValue: PropTypes.bool,
 };
 
 export default RichTextBox;

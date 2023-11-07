@@ -2,121 +2,111 @@ import { AiOutlineFrown, AiOutlinePlus } from 'react-icons/ai';
 import { SlCalender, SlActionRedo } from 'react-icons/sl';
 import { BiCategory, BiMedal } from 'react-icons/bi';
 import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
+import useAxios from '../../Hooks/useAxios';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import ProjectCard from '../../Components/ProjectCard/ProjectCard';
+import MultiSelectOption from '../../ReuseableUI/MultiSelectOption/MultiSelectOption';
 
 const AllProjects = () => {
+  const secureAxios = useAxios();
+  const [allProjectsData, setAllProjectsData] = useState([]);
+  const [displayData, setDisplayData] = useState([]);
+  const [filterData, setFilterData] = useState('');
+
+  useEffect(() => {
+    secureAxios
+      .get('/projects')
+      .then((res) => {
+        setAllProjectsData(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        // Handle errors as needed
+      });
+  }, []);
+
+  const handleFilterByCategory = (selected) => {
+    const queryString = new URLSearchParams();
+    queryString.append('category', selected.join('&'));
+
+    secureAxios
+      .get(`/projects/filter?${queryString.toString()}`)
+      .then((res) => {
+        console.log(res.data);
+        setAllProjectsData(res.data);
+        setFilterData(
+          `Total ${res.data.length} Assignment Found ${
+            selected ? 'for ' + selected : ''
+          }`
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleFilterByDifficulty = (selected) => {
+    const queryString = new URLSearchParams();
+    queryString.append('difficulty', selected.join('&'));
+
+    secureAxios
+      .get(`/projects/filter?${queryString.toString()}`)
+      .then((res) => {
+        console.log(res.data);
+        setAllProjectsData(res.data);
+        setFilterData(
+          `Total ${res.data.length} Assignment Found ${
+            selected.length !== 0 ? 'for ' + selected : ''
+          }`
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
-    <div className='flex justify-start items-center my-10 container mx-auto'>
-      {/* card for showing the projects  */}
-      <div className='p-5 rounded-lg border-2 border-primary bg-slate-100 shadow-xl max-w-[470px]'>
-        {/* project thumbnail */}
-        <div className=''>
-          <img
-            className='rounded-lg object-cover'
-            src='https://i.ibb.co/1QDRKyT/flipcard2.jpg'
-            loading='lazy'
-          />
-        </div>
-
-        {/* crated by */}
-        <div className='mt-6'>
-          <div className='mx-auto w-fit'>
-            <PrimaryButton text='Created By' />
-          </div>
-          <div className='flex justify-center items-center gap-2 py-3'>
-            <img
-              src='https://i.ibb.co/LvsQCJY/addidas-tshirt-joggers.jpg'
-              className='sm:w-[50px] md:w-[60px] w-[40px] rounded-full object-cover'
-              loading='lazy'
-            />
-            <div className='text-center text-[12px] sm:text-[14px] md:text-base'>
-              <p className='gradient-text font-semibold capitalize'>
-                Muhammad Shahin
-              </p>
-              <p className='gradient-text font-semibold'>
-                muhammdsahin002@gmail.com
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* project contetnt */}
-        <div className='mt-6 space-y-4'>
-          {/* title & description */}
-          <h2 className='lg:text-2xl text-lg font-semibold gradient-text uppercase text-center'>
-            React Quiz Application Using Node JS
-          </h2>
-          <p className='text-center'>
-            Craft and manage assignments effortlessly. Specify tasks, set
-            deadlines, and choose the difficulty level. Take control of your
-            learning journey. deadlines, and choose the difficulty level. Take
-            control of your learning journey.
-          </p>
-
-          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-8 md:gap-0'>
-            {/* difficulty level */}
-            <div>
-              <p className='gradient-text md:font-medium text-center'>
-                Diffculty Level
-              </p>
-              <button
-                className={`round-btn sm:min-w-[150px] bg-red-500 flex justify-center items-center gap-1 lg:gap-2`}
-              >
-                <AiOutlineFrown className='md:text-[26px]' />
-                Hard
-              </button>
-            </div>
-            {/* due date */}
-            <div>
-              <p className='gradient-text md:font-medium text-center'>
-                Due Date
-              </p>
-              <button
-                className={`round-btn sm:min-w-[150px] bg-primary flex justify-center items-center gap-1 lg:gap-2`}
-              >
-                <SlCalender className='md:text-[22px]' />6 Nov, 2023
-              </button>
-            </div>
-          </div>
-          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-8 md:gap-0'>
-            {/* total marks */}
-            <div>
-              <p className='gradient-text md:font-medium text-center'>
-                Total Marks
-              </p>
-              <button
-                className={`round-btn sm:min-w-[150px] bg-tertiary flex justify-center items-center gap-1 lg:gap-2`}
-              >
-                <BiMedal className='md:text-[22px]' />
-                60 Marks
-              </button>
-            </div>
-            {/* category */}
-            <div>
-              <p className='gradient-text md:font-medium text-center'>
-                Category
-              </p>
-              <button
-                className={`round-btn sm:min-w-[150px] bg-tertiary flex justify-center items-center gap-1 lg:gap-2`}
-              >
-                <BiCategory className='md:text-[22px]' />
-                Web Dev
-              </button>
-            </div>
-          </div>
-          {/* actions buttons */}
-          <div className='flex-bet gap-2 md:gap-0'>
-            <PrimaryButton
-              text='Take Assignment'
-              icon={<AiOutlinePlus />}
-            />
-            <PrimaryButton
-              text='View Details'
-              icon={<SlActionRedo />}
-            />
-          </div>
-        </div>
+    <section className='bg-[#eff2f39c] dark:bg-dark'>
+      <h1 className='lg:text-6xl text-2xl gradient-text text-center font-semibold py-2 pt-8'>
+        All Assignments
+      </h1>
+      <div className='w-fit mx-auto min-w-[250px] flex flex-wrap gap-6 mt-8'>
+        <MultiSelectOption
+          name='filterByCategory'
+          optionsData={[
+            'Physics',
+            'Mathematics',
+            'Programming',
+            'Artificial Intelligence',
+            'App Development',
+            'Web Development',
+          ]}
+          defaultOption={'Filter By Category'}
+          handleChange={handleFilterByCategory}
+          label='Filter By Category'
+        />
+        <MultiSelectOption
+          name='filterByDifficulty'
+          optionsData={['Easy', 'Medium', 'Hard']}
+          defaultOption={'Filter By Difficulty'}
+          handleChange={handleFilterByDifficulty}
+          label='Filter By Difficulty'
+        />
       </div>
-    </div>
+      {filterData && (
+        <p className='lg:text-3xl text-2xl gradient-text text-center font-semibold py-2 pt-8'>
+          {filterData}
+        </p>
+      )}
+
+      <div className='container mx-auto grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-center content-center w-[90%] lg:w-full'>
+        {allProjectsData?.map((project) => (
+          <ProjectCard
+            key={project._id}
+            projectData={project}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
 
