@@ -4,9 +4,14 @@ import { BsUpload } from 'react-icons/bs';
 import { storage } from '../../Configs/firebase.config';
 import PropTypes from 'prop-types';
 
-const UploadAnyFile = ({ label, handleChange, isRequired }) => {
+const UploadAnyFile = ({
+  label,
+  handleChange,
+  isRequired,
+  setFileSuccess,
+  fileSuccess,
+}) => {
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
   const [disableUpload, setDisableUpload] = useState(false);
   const [uploadedfileUrl, setUploadedFileUrl] = useState(null);
 
@@ -24,21 +29,21 @@ const UploadAnyFile = ({ label, handleChange, isRequired }) => {
   const handleFileUpload = (file, name) => {
     if (!file) return;
     setError(null);
-    setSuccess(`Uploading... ${name}. Please Wait`);
+    setFileSuccess(`Uploading... ${name}. Please Wait`);
     setDisableUpload(true); // Disable the label during the upload
     const randomNumber = Math.floor(Math.random() * 100);
     const fileRef = ref(storage, `RMP/ProjectFile/${randomNumber}${name}`);
     uploadBytes(fileRef, file).then((snapshot) => {
       getDownloadURL(snapshot.ref)
         .then((url) => {
-          setSuccess(`${name} Upload successful.`);
+          setFileSuccess(`${name} Upload successful.`);
           setDisableUpload(false);
           setUploadedFileUrl(url);
           handleChange(url); // Only pass the URL to the handleChange function
         })
         .catch((error) => {
           setError(error.message);
-          setSuccess(null);
+          setFileSuccess(null);
           setDisableUpload(false);
         });
     });
@@ -58,7 +63,7 @@ const UploadAnyFile = ({ label, handleChange, isRequired }) => {
         }`}
         htmlFor='projectFile'
       >
-        <BsUpload className='text-7xl text-lightBlack cursor-pointer' />
+        <BsUpload className='text-7xl text-[#565656] cursor-pointer' />
         <input
           type='file'
           id='projectFile'
@@ -66,11 +71,15 @@ const UploadAnyFile = ({ label, handleChange, isRequired }) => {
           onChange={handleFileChange}
         />
       </label>
-      {success && (
-        <p className='text-[14px] text-green-600 text-center mt-2'>{success}</p>
+      {fileSuccess && (
+        <p className='text-[14px] text-green-600 text-center mt-2 max-w-[300px] mx-auto'>
+          {fileSuccess}
+        </p>
       )}
       {error && (
-        <p className='text-[12px] text-red-600 text-center mt-2'>{error}</p>
+        <p className='text-[12px] text-red-600 text-center mt-2 max-w-[300px] mx-auto'>
+          {error}
+        </p>
       )}
     </div>
   );
@@ -80,6 +89,8 @@ UploadAnyFile.propTypes = {
   isRequired: PropTypes.bool,
   label: PropTypes.string,
   handleChange: PropTypes.func,
+  setFileSuccess: PropTypes.func,
+  fileSuccess: PropTypes.string,
 };
 
 export default UploadAnyFile;

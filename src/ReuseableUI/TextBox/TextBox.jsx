@@ -29,7 +29,9 @@ const TextBox = ({
         ></textarea>
       </div>
       {message && (
-        <p className='text-[14px] font-medium text-purple mt-2'>{message}</p>
+        <p className='text-[14px] font-medium text-purple mt-2 max-w-[300px] mx-auto'>
+          {message}
+        </p>
       )}
     </div>
   );

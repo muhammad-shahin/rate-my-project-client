@@ -30,6 +30,7 @@ const ProjectDetails = () => {
   const [submittedFileUrl, setSubmittedFileUrl] = useState(null);
   const [submittedQuickNote, setSubmittedQuickNote] = useState(null);
   const [error, setError] = useState(null);
+  const [fileSuccess, setFileSuccess] = useState(null);
   const { user } = useContext(AuthContext);
   useEffect(() => {
     secureAxios.get(`/project/${projectId}`).then((res) => {
@@ -58,13 +59,15 @@ const ProjectDetails = () => {
   const handleQuickNote = (e) => {
     setSubmittedQuickNote(e.target.value);
   };
-  const handleProjectSubmit = () => {
+  const handleProjectSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
     if (submittedFileUrl && submittedQuickNote) {
       setError(null);
       const newSubmit = {
         submittedFileUrl,
         submittedQuickNote,
-        submitterEmail: user.email,
+        examineeEmail: user.email,
         examineeName: user.displayName,
         approveStatus: 'Pending',
         givenMarks: 0,
@@ -73,16 +76,35 @@ const ProjectDetails = () => {
         projectThumbnail,
       };
       console.log(newSubmit);
+      secureAxios
+        .post('/submitted-projects', newSubmit)
+        .then((res) => {
+          console.log(res);
+          if (res.data.acknowledged) {
+            form.reset();
+            setFileSuccess(null);
+            setModalStatus(false);
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Assignment Submitted Successfully',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Failed to Create Asignment! Try Again',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        });
     } else {
       setError('Please Give Necessary Information to Submit This Assignment');
-      // Swal.fire({
-      //   position: 'center',
-      //   icon: 'error',
-      //   title: 'Failed To Submit',
-      //   text: 'Please Give Necessary Information to Submit This Assignment',
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      // });
     }
   };
   return (
@@ -126,7 +148,7 @@ const ProjectDetails = () => {
           </h2>
           <p className='text-center'>{projectDescription}</p>
 
-          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-2 xl:gap-6 md:gap-0'>
+          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-2 xl:gap-6 md:gap-3'>
             {/* difficulty level */}
             <div>
               <p className='gradient-text md:font-medium text-center'>
@@ -215,15 +237,22 @@ const ProjectDetails = () => {
         modalStatus={modalStatus}
         setCustomModalStatus={setModalStatus}
       >
-        <div className='space-y-4'>
+        <form
+          onSubmit={handleProjectSubmit}
+          className='space-y-4'
+        >
           <UploadAnyFile
             label='Upload Assignment File'
             handleChange={handleProjectFileUpload}
+            isRequired={true}
+            fileSuccess={fileSuccess}
+            setFileSuccess={setFileSuccess}
           />
           <TextBox
             label='Quick Note'
             placeholder='Write  if something necessary to let the examine know about'
             handleChange={handleQuickNote}
+            isRequired={true}
           />
           {error && (
             <p className='text-[14px] text-red-600 max-w-[300px] mx-auto font-medium'>
@@ -233,10 +262,10 @@ const ProjectDetails = () => {
           <div className='w-fit mx-auto'>
             <PrimaryButton
               text='Submit Assignment'
-              handleOnClick={handleProjectSubmit}
+              type='submit'
             />
           </div>
-        </div>
+        </form>
       </CustomModal>
     </div>
   );
