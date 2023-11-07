@@ -68,7 +68,7 @@ const ProjectCard = ({ projectData }) => {
             {projectDescription.slice(0, 120)}...
           </p>
 
-          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-8 md:gap-0'>
+          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-8 md:gap-3'>
             {/* difficulty level */}
             <div>
               <p className='gradient-text md:font-medium text-center'>
@@ -107,7 +107,7 @@ const ProjectCard = ({ projectData }) => {
               </button>
             </div>
           </div>
-          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-8 md:gap-0'>
+          <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-8 md:gap-3'>
             {/* total marks */}
             <div>
               <p className='gradient-text md:font-medium text-center'>

@@ -7,6 +7,7 @@ const TextBox = ({
   handleChange,
   isRequired,
   message,
+  readOnly,
 }) => {
   return (
     <div className='flex flex-col gap-1 w-full'>
@@ -26,6 +27,7 @@ const TextBox = ({
           value={value}
           onChange={handleChange}
           required={isRequired}
+          readOnly={readOnly}
         ></textarea>
       </div>
       {message && (

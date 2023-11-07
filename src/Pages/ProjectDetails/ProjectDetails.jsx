@@ -50,7 +50,6 @@ const ProjectDetails = () => {
     category,
     totalMarks,
     requirements,
-    _id,
   } = projectData;
 
   const handleProjectFileUpload = (fileUrl) => {
@@ -74,6 +73,9 @@ const ProjectDetails = () => {
         totalMarks,
         projectTitle,
         projectThumbnail,
+        creatorName,
+        creatorEmail,
+        creatorPhotoUrl,
       };
       console.log(newSubmit);
       secureAxios
@@ -108,9 +110,9 @@ const ProjectDetails = () => {
     }
   };
   return (
-    <div className='flex justify-center items-center my-10 container mx-auto lg:w-full w-[90%]'>
+    <div className='flex justify-center items-center py-10 container mx-auto lg:w-full w-[90%]'>
       {/* card for showing the projects  */}
-      <div className='p-8 rounded-lg border-2 border-primary bg-slate-100 shadow-xl max-w-[1080px]'>
+      <div className='p-8 rounded-lg border-2 border-primary bg-slate-100 dark:bg-[#2d343c] shadow-xl max-w-[1080px]'>
         {/* project thumbnail */}
         <div className=''>
           <img
@@ -146,7 +148,7 @@ const ProjectDetails = () => {
           <h2 className='lg:text-2xl xl:text-4xl text-lg font-semibold xl:font-bold  gradient-text uppercase text-center'>
             {projectTitle}
           </h2>
-          <p className='text-center'>{projectDescription}</p>
+          <p className='text-center dark:text-white max-w-2xl mx-auto'>{projectDescription}</p>
 
           <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-2 xl:gap-6 md:gap-3'>
             {/* difficulty level */}
@@ -212,7 +214,7 @@ const ProjectDetails = () => {
             </div>
           </div>
           {/* project requirements */}
-          <div className='py-10 space-y-3'>
+          <div className='py-10 space-y-3 dark:text-white'>
             <h2 className='lg:text-2xl xl:text-4xl text-lg font-semibold xl:font-bold  gradient-text uppercase text-center'>
               project requirements
             </h2>

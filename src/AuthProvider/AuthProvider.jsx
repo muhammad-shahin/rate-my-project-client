@@ -62,6 +62,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      localStorage.setItem('userData', JSON.stringify(currentUser));
       setLoading(false);
       if (!currentUser) {
         secureAxios

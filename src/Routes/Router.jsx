@@ -4,6 +4,7 @@ import CreateProject from '../Pages/CreateProject/CreateProject';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
+import MyProjects from '../Pages/MyProjects/MyProjects';
 import ProjectDetails from '../Pages/ProjectDetails/ProjectDetails';
 import SignUp from '../Pages/SignUp/SignUp';
 
@@ -36,6 +37,10 @@ const routes = [
       {
         path: '/project-details/:projectId',
         element: <ProjectDetails />,
+      },
+      {
+        path: '/my-projects',
+        element: <MyProjects />,
       },
     ],
   },

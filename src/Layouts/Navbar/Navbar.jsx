@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Fade as Hamburger } from 'hamburger-react';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import './Navbar.css';
 import UserProfile from '../../Components/UserProfile/UserProfile';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -11,33 +11,13 @@ import DarkTheme from '../../Components/DarkTheme/DarkTheme';
 import logo from '../../assets/logo/rate-my-project-logo.png';
 
 const Navbar = () => {
-  const {
-    user,
-    showProfile,
-    setShowProfile,
-    updatedCartCount,
-    setUpdatedCartCount,
-  } = useContext(AuthContext);
+  const { user, showProfile, setShowProfile } = useContext(AuthContext);
   const [isOpen, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  // const [cartCount, setCartCount] = useState(0);
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`http://localhost:5000/addedCart/${user.uid}`, {
-  //       credentials: 'include',
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setCartCount(data.length);
-  //         setUpdatedCartCount(data.length);
-  //       });
-  //   }
-  // }, [user, updatedCartCount]);
-
   return (
     <header className=''>
-      <nav className='py-3 container mx-auto flex justify-between items-center w-[90%] xl:w-auto relative text-black dark:text-white'>
+      <nav className='py-3 container mx-auto flex justify-between items-center w-[90%] xl:w-auto text-black dark:text-white'>
         {/* logo */}
         <div
           className='cursor-pointer'
@@ -54,12 +34,12 @@ const Navbar = () => {
         </div>
         {/* nav items */}
         <ul
-          className={` xl:static fixed top-[75px] ${
+          className={` xl:static absolute top-[75px] ${
             isOpen ? 'right-0' : 'right-[-100%]'
           } xl:h-auto h-screen xl:w-auto w-[50%] flex xl:flex-row flex-col bg-gray-200 dark:bg-[#00aaff6c] backdrop-blur-[25px] xl:px-5 py-2 justify-start xl:justify-center items-center duration-700 z-[100] xl:rounded-full xl:pt-2 pt-10 text-white`}
         >
           <li
-            className='text-white dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
             onClick={() => {
               setOpen(false);
             }}
@@ -67,7 +47,7 @@ const Navbar = () => {
             <NavLink to='/'>Home</NavLink>
           </li>
           <li
-            className='text-white dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
             onClick={() => {
               setOpen(false);
             }}
@@ -75,7 +55,7 @@ const Navbar = () => {
             <NavLink to='/my-assignment'>My Assignment</NavLink>
           </li>
           <li
-            className='text-white dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
             onClick={() => {
               setOpen(false);
             }}
@@ -83,18 +63,26 @@ const Navbar = () => {
             <NavLink to='/all-projects'>All Assignment</NavLink>
           </li>
           <li
-            className='text-white dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
             onClick={() => {
               setOpen(false);
             }}
           >
             <NavLink to='/create-project'>Create Assignment</NavLink>
           </li>
+          <li
+            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            <NavLink to='/my-projects'>My Assignment</NavLink>
+          </li>
           {user ? (
             ''
           ) : (
             <li
-              className='text-white dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+              className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
               onClick={() => {
                 setOpen(false);
               }}

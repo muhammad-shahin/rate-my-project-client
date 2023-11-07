@@ -22,7 +22,13 @@ const AllProjects = () => {
       })
       .catch((error) => {
         console.log(error);
-        // Handle errors as needed
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Failed To Load All Porjects Data! Try Again',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   }, []);
 
@@ -66,7 +72,7 @@ const AllProjects = () => {
   };
   return (
     <section className='bg-[#eff2f39c] dark:bg-dark'>
-      <h1 className='lg:text-6xl text-2xl gradient-text text-center font-semibold py-2 pt-8'>
+      <h1 className='lg:text-5xl text-2xl gradient-text text-center font-semibold py-2 pt-8'>
         All Assignments
       </h1>
       <div className='w-fit mx-auto min-w-[250px] flex flex-wrap gap-6 mt-8'>
