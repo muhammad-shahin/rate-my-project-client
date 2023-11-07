@@ -19,6 +19,7 @@ const CustomDatePicker = ({
   placeholder,
 }) => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [open, setOpen] = useState(false);
   const minDate = new Date();
   const handleDateChange = (date) => {
     if (date < minDate) {
@@ -44,9 +45,15 @@ const CustomDatePicker = ({
         required={isRequired}
         placeholderText={selectedDate ? selectedDate : placeholder}
         minDate={minDate}
+        open={open}
+        onBlur={() => setOpen(!open)}
+        onFocus={() => setOpen(!open)}
       ></DatePicker>
       <div className='absolute top-[70%] translate-y-[-50%] right-[15px]'>
-        <SlCalender className='text-primary cursor-pointer text-[24px]' />
+        <SlCalender
+          onClick={() => setOpen(!open)}
+          className='text-primary cursor-pointer text-[24px]'
+        />
       </div>
 
       {message && (

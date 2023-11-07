@@ -21,19 +21,19 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  const [cartCount, setCartCount] = useState(0);
-  useEffect(() => {
-    if (user) {
-      fetch(`http://localhost:5000/addedCart/${user.uid}`, {
-        credentials: 'include',
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setCartCount(data.length);
-          setUpdatedCartCount(data.length);
-        });
-    }
-  }, [user, updatedCartCount]);
+  // const [cartCount, setCartCount] = useState(0);
+  // useEffect(() => {
+  //   if (user) {
+  //     fetch(`http://localhost:5000/addedCart/${user.uid}`, {
+  //       credentials: 'include',
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setCartCount(data.length);
+  //         setUpdatedCartCount(data.length);
+  //       });
+  //   }
+  // }, [user, updatedCartCount]);
 
   return (
     <header className=''>
@@ -115,7 +115,7 @@ const Navbar = () => {
             />
             {user && (
               <p className='bg-red-600 rounded-full text-[8px] p-1 flex justify-center items-center absolute top-0 right-0 w-[15px] h-[15px] text-white grad-bg'>
-                {cartCount ? cartCount : 0}
+                {/* {cartCount ? cartCount : 0} */}
               </p>
             )}
           </div>

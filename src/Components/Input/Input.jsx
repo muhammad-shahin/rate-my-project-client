@@ -5,6 +5,7 @@ import FileUpload from '../FileUpload/FileUpload';
 import SelectOptions from '../../ReuseableUI/SelectOptions/SelectOptions';
 import TextBox from '../../ReuseableUI/TextBox/TextBox';
 import DatePicker from '../../ReuseableUI/DatePicker/DatePicker';
+import RichTextBox from '../../ReuseableUI/RichTextBox/RichTextBox';
 const Input = ({
   name,
   type,
@@ -54,6 +55,18 @@ const Input = ({
   if (type === 'calendar') {
     return (
       <DatePicker
+        name={name}
+        label={labelText}
+        type={type}
+        isRequired={isRequired}
+        handleChange={onChange}
+        placeholder={placeholder}
+      />
+    );
+  }
+  if (type === 'richtextbox') {
+    return (
+      <RichTextBox
         name={name}
         label={labelText}
         type={type}

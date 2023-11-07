@@ -25,7 +25,9 @@ const Form = ({
       <div className='absolute top-0 left-0'>
         <ParticlesBackground />
       </div>
-      <div className=' container mx-auto w-fit grid lg:grid-cols-2 grid-cols-1 shadow-xl my-8 relative '>
+      <div
+        className={` container mx-auto w-fit grid lg:grid-cols-2 grid-cols-1 shadow-xl my-8 relative`}
+      >
         {/* left side content */}
         <div className='w-full flex-1 px-4 md:px-8 xl:px-20 py-10 bg-white dark:bg-gray-400 rounded lg:rounded-l'>
           <h1 className='lg:text-[32px] text-[24px] font-medium uppercase lg:mb-10 mb-3'>
@@ -89,7 +91,7 @@ const Form = ({
         </div>
 
         {/* right side content */}
-        <div className='px-14 py-10 bg-secondary rounded-r hidden lg:flex justify-center items-center'>
+        <div className='px-14 py-10 bg-secondary rounded-r hidden lg:flex justify-center items-center relative'>
           {lottieAnimation && (
             <Lottie
               loop

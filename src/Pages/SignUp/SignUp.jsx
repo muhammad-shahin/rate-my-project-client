@@ -20,13 +20,13 @@ const SignUp = () => {
   const [profilePicture, setProfilePicture] = useState('');
 
   // show password regular expression error
-  const handleFieldValueChange = (e, customValue) => {
-    if (e.target.name === 'profilePicture') {
+  const handleFieldValueChange = (e, customName, customValue) => {
+    if (!e && customName === 'profilePicture') {
       setProfilePicture(customValue);
     }
-    if (e.target.name === 'password') {
+    if (e?.target.name === 'password') {
       setPasswordErrorMessage(passwordErrorChecker(e));
-    } else if (e.target.name === 'confirmPassword') {
+    } else if (e?.target.name === 'confirmPassword') {
       setConfirmPasswordErrorMessage(passwordErrorChecker(e));
     }
   };

@@ -37,6 +37,7 @@ const FileUpload = ({ name, label, handleChange, isRequired, message }) => {
           setSuccess(`Uploaded Successfully. Continue to Next Step`);
           setDisableUpload(false);
           setUploadedImageUrl(url);
+          // handleChange(null, name, url);
         })
         .catch((error) => {
           setError(error.message);
@@ -47,7 +48,7 @@ const FileUpload = ({ name, label, handleChange, isRequired, message }) => {
   };
   useEffect(() => {
     if (event && uploadedImageUrl) {
-      handleChange(event, uploadedImageUrl);
+      handleChange(null, name, uploadedImageUrl);
     }
   }, [uploadedImageUrl, event]);
 

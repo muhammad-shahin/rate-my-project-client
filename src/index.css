@@ -120,7 +120,7 @@ body {
   }
 }
 
-/* date type */
-input[type='date']::-webkit-calendar-picker-indicator {
-  cursor: pointer;
+/* custom-quill-styles.css */
+.ql-editor {
+  text-transform: none !important;
 }

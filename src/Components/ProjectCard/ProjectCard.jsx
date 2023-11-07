@@ -8,8 +8,11 @@ import { SlCalender, SlActionRedo } from 'react-icons/sl';
 import { BiCategory, BiMedal } from 'react-icons/bi';
 import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const ProjectCard = ({ projectData }) => {
+  const { user } = useContext(AuthContext);
   const {
     projectTitle,
     projectDescription,
@@ -17,7 +20,7 @@ const ProjectCard = ({ projectData }) => {
     creatorName,
     creatorEmail,
     creatorPhotoUrl,
-    diffcultyLevel,
+    difficultyLevel,
     dueDate,
     category,
     totalMarks,
@@ -71,24 +74,24 @@ const ProjectCard = ({ projectData }) => {
               </p>
               <button
                 className={`round-btn flex justify-center items-center gap-1 lg:gap-2 ${
-                  (diffcultyLevel === 'Hard' && 'bg-red-500',
-                  diffcultyLevel === 'Medium' && 'bg-orange-400',
-                  diffcultyLevel === 'Easy' && 'bg-green-500')
+                  difficultyLevel === 'Hard' && 'bg-red-500'
+                } ${difficultyLevel === 'Medium' && 'bg-orange-500'} ${
+                  difficultyLevel === 'Easy' && 'bg-green-500'
                 }`}
               >
                 {
-                  (diffcultyLevel === 'Hard' && (
+                  (difficultyLevel === 'Hard' && (
                     <AiOutlineFrown className='md:text-[26px]' />
                   ),
-                  diffcultyLevel === 'Medium' && (
+                  difficultyLevel === 'Medium' && (
                     <AiOutlineMeh className='md:text-[26px]' />
                   ),
-                  diffcultyLevel === 'Easy' && (
+                  difficultyLevel === 'Easy' && (
                     <AiOutlineSmile className='md:text-[26px]' />
                   ))
                 }
 
-                {diffcultyLevel}
+                {difficultyLevel}
               </button>
             </div>
             {/* due date */}
