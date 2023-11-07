@@ -4,16 +4,18 @@ import {
   AiOutlineFrown,
   AiOutlinePlus,
 } from 'react-icons/ai';
-import { BsUpload } from 'react-icons/bs';
 import { SlCalender } from 'react-icons/sl';
 import { BiCategory, BiMedal } from 'react-icons/bi';
 import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import CustomModal from '../../Components/CustomModal/CustomModal';
 import TextBox from '../../ReuseableUI/TextBox/TextBox';
 import PropTypes from 'prop-types';
+import UploadAnyFile from '../../Components/UploadAnyFile/UploadAnyFile';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 // dangerous html set
 function DangerousHTML({ htmlContent }) {
@@ -25,7 +27,10 @@ const ProjectDetails = () => {
   const { projectId } = useParams();
   const [projectData, setProjectData] = useState({});
   const [modalStatus, setModalStatus] = useState(false);
-
+  const [submittedFileUrl, setSubmittedFileUrl] = useState(null);
+  const [submittedQuickNote, setSubmittedQuickNote] = useState(null);
+  const [error, setError] = useState(null);
+  const { user } = useContext(AuthContext);
   useEffect(() => {
     secureAxios.get(`/project/${projectId}`).then((res) => {
       console.log(res);
@@ -46,6 +51,40 @@ const ProjectDetails = () => {
     requirements,
     _id,
   } = projectData;
+
+  const handleProjectFileUpload = (fileUrl) => {
+    setSubmittedFileUrl(fileUrl);
+  };
+  const handleQuickNote = (e) => {
+    setSubmittedQuickNote(e.target.value);
+  };
+  const handleProjectSubmit = () => {
+    if (submittedFileUrl && submittedQuickNote) {
+      setError(null);
+      const newSubmit = {
+        submittedFileUrl,
+        submittedQuickNote,
+        submitterEmail: user.email,
+        examineeName: user.displayName,
+        approveStatus: 'Pending',
+        givenMarks: 0,
+        totalMarks,
+        projectTitle,
+        projectThumbnail,
+      };
+      console.log(newSubmit);
+    } else {
+      setError('Please Give Necessary Information to Submit This Assignment');
+      // Swal.fire({
+      //   position: 'center',
+      //   icon: 'error',
+      //   title: 'Failed To Submit',
+      //   text: 'Please Give Necessary Information to Submit This Assignment',
+      //   showConfirmButton: false,
+      //   timer: 1500,
+      // });
+    }
+  };
   return (
     <div className='flex justify-center items-center my-10 container mx-auto lg:w-full w-[90%]'>
       {/* card for showing the projects  */}
@@ -176,12 +215,27 @@ const ProjectDetails = () => {
         modalStatus={modalStatus}
         setCustomModalStatus={setModalStatus}
       >
-        <div>
+        <div className='space-y-4'>
+          <UploadAnyFile
+            label='Upload Assignment File'
+            handleChange={handleProjectFileUpload}
+          />
           <TextBox
             label='Quick Note'
-            isRequired={true}
             placeholder='Write  if something necessary to let the examine know about'
+            handleChange={handleQuickNote}
           />
+          {error && (
+            <p className='text-[14px] text-red-600 max-w-[300px] mx-auto font-medium'>
+              {error}
+            </p>
+          )}
+          <div className='w-fit mx-auto'>
+            <PrimaryButton
+              text='Submit Assignment'
+              handleOnClick={handleProjectSubmit}
+            />
+          </div>
         </div>
       </CustomModal>
     </div>
