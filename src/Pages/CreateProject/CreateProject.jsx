@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Form from '../../Components/Form/Form';
+import RichTextBox from '../../ReuseableUI/RichTextBox/RichTextBox';
 
 const CreateProject = () => {
   const [createProjectData, setCreateProjectData] = useState({});
@@ -10,13 +11,20 @@ const CreateProject = () => {
   };
   // show password regular expression error
   const handleFieldValueChange = (e, customName, customValue) => {
-    const fieldName = e.target.name;
-    const value = e.target.value;
-    console.log(fieldName, value);
-    setCreateProjectData((prevData) => ({
-      ...prevData,
-      [fieldName]: value,
-    }));
+    if (!e && customName === 'dueDate') {
+      setCreateProjectData((prevData) => ({
+        ...prevData,
+        [customName]: customValue,
+      }));
+    } else {
+      const fieldName = e.target.name;
+      const value = e.target.value;
+      console.log(fieldName, value);
+      setCreateProjectData((prevData) => ({
+        ...prevData,
+        [fieldName]: value,
+      }));
+    }
   };
   console.log(createProjectData);
   const [projectCreationFields, setProjectCreationFields] = useState([
@@ -63,7 +71,7 @@ const CreateProject = () => {
     },
     {
       name: 'dueDate',
-      type: 'date',
+      type: 'calendar',
       placeholder: 'Select last Submission Date',
       onChange: handleFieldValueChange,
       labelText: 'Select due date',
@@ -72,6 +80,7 @@ const CreateProject = () => {
   ]);
   return (
     <div className=''>
+      <RichTextBox />
       <Form
         title='Create A New Assignment'
         inputFields={projectCreationFields}
