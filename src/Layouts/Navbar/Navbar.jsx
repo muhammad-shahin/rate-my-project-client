@@ -9,9 +9,11 @@ import { AiOutlineBell } from 'react-icons/ai';
 import { VscAccount } from 'react-icons/vsc';
 import DarkTheme from '../../Components/DarkTheme/DarkTheme';
 import logo from '../../assets/logo/rate-my-project-logo.png';
+import { BiExit } from 'react-icons/bi';
 
 const Navbar = () => {
-  const { user, showProfile, setShowProfile } = useContext(AuthContext);
+  const { user, showProfile, setShowProfile, logoutUser } =
+    useContext(AuthContext);
   const [isOpen, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -102,18 +104,16 @@ const Navbar = () => {
         {/* cart icons */}
         <div className='flex justify-center items-center gap-5'>
           <DarkTheme />
-          <div className='bg-gray-200 opacity-[0.7] backdrop-blur-lg rounded-full p-2 cursor-pointer hover:opacity-[1] hover:bg-primary hover:bg-opacity-[0.39] hover:text-white relative  dark:opacity-[1] dark:text-primary'>
-            <AiOutlineBell
+          <div
+            className='bg-gray-200 opacity-[0.7] backdrop-blur-lg rounded-full p-2 cursor-pointer hover:opacity-[1] hover:bg-primary hover:bg-opacity-[0.39] hover:text-white relative  dark:opacity-[1] dark:text-primary gradient-anim'
+            title='Logout'
+          >
+            <BiExit
               onClick={() => {
-                navigate('/myCart');
+                logoutUser();
               }}
               className='text-[22px]'
             />
-            {user && (
-              <p className='bg-red-600 rounded-full text-[8px] p-1 flex justify-center items-center absolute top-0 right-0 w-[15px] h-[15px] text-white grad-bg'>
-                {/* {cartCount ? cartCount : 0} */}
-              </p>
-            )}
           </div>
         </div>
         {/* Profile Icon */}

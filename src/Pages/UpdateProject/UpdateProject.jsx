@@ -1,19 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import Form from '../../Components/Form/Form';
 import ProjectCard from '../../Components/ProjectCard/ProjectCard';
 import useAxios from '../../Hooks/useAxios';
 import Swal from 'sweetalert2';
-import { useParams } from 'react-router-dom';
-import getProjectById from '../../Api/getProjectById';
-import { useQuery } from '@tanstack/react-query';
-import Lottie from 'lottie-react';
-import notAvailableAnim from '../../assets/Animation/notAvailable.json';
-import loadingAnimation from '../../assets/Animation/loadingAnimation.json';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UpdateProject = () => {
   const secureAxios = useAxios();
   const { projectId } = useParams();
   const userData = JSON.parse(localStorage.getItem('userData'));
+  const navigate = useNavigate();
   const [updateProjectData, setUpdateProjectData] = useState({
     projectTitle: 'Your Title Will Add Here',
     projectDescription: 'Your Description Will Add Here',
@@ -46,6 +43,7 @@ const UpdateProject = () => {
           });
           form.reset();
           setCurrentData({});
+          navigate('/dashboard');
         }
       })
       .catch((error) => {
@@ -92,7 +90,6 @@ const UpdateProject = () => {
       setUpdateProjectData(res.data);
     });
   }, []);
-  console.log('currentData', currentData);
   const projectCreationFields = [
     {
       name: 'projectTitle',

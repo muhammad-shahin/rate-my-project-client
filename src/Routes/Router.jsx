@@ -10,6 +10,7 @@ import ProjectDetails from '../Pages/ProjectDetails/ProjectDetails';
 import SignUp from '../Pages/SignUp/SignUp';
 import SubmittedProjects from '../Pages/SubmittedProjects/SubmittedProjects';
 import UpdateProject from '../Pages/UpdateProject/UpdateProject';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const routes = [
   {
@@ -31,7 +32,11 @@ const routes = [
       },
       {
         path: '/create-project',
-        element: <CreateProject />,
+        element: (
+          <PrivateRoute>
+            <CreateProject />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/all-projects',
@@ -39,23 +44,43 @@ const routes = [
       },
       {
         path: '/project-details/:projectId',
-        element: <ProjectDetails />,
+        element: (
+          <PrivateRoute>
+            <ProjectDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/my-projects',
-        element: <MyProjects />,
+        element: (
+          <PrivateRoute>
+            <MyProjects />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/submitted-projects',
-        element: <SubmittedProjects />,
+        element: (
+          <PrivateRoute>
+            <SubmittedProjects />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/update/:projectId',
-        element: <UpdateProject />,
+        element: (
+          <PrivateRoute>
+            <UpdateProject />
+          </PrivateRoute>
+        ),
       },
     ],
   },
