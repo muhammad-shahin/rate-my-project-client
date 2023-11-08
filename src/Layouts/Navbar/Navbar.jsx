@@ -29,7 +29,7 @@ const Navbar = () => {
             src={logo}
             alt='Rate My Project Logo'
             loading='lazy'
-            className='w-[150px]'
+            className='lg:w-[150px] w-[100px]'
           />
         </div>
         {/* nav items */}

@@ -28,7 +28,7 @@ const ProjectCard = ({ projectData }) => {
   return (
     <div className='my-10'>
       {/* card for showing the projects  */}
-      <div className='p-5 rounded-lg border-2 border-primary bg-slate-100 shadow-xl max-w-[470px] dark:bg-[#2d343c]'>
+      <div className='p-5 rounded-lg border-2 border-primary bg-slate-100 shadow-xl  dark:bg-[#2d343c]'>
         {/* project thumbnail */}
         <div className=''>
           <img

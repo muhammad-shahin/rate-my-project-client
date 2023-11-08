@@ -41,11 +41,11 @@ const SubmittedProjects = () => {
   }
   return (
     <section className='bg-[#eff2f39c] dark:bg-dark'>
-      <h1 className='lg:text-4xl text-2xl gradient-text text-center font-semibold py-2 pt-8'>
+      <h1 className='lg:text-4xl text-2xl gradient-text text-center font-semibold py-2 pt-8 px-[10%] xl:px-0'>
         People That Submitted Your Assignments
       </h1>
 
-      <div className='container mx-auto grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-center content-center w-[90%] lg:w-full'>
+      <div className='grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 lg:gap-6 xl:gap-10  lg:w-full container mx-auto'>
         {submittedProjects?.map((project) => (
           <SubmittedProjectCard
             key={project._id}

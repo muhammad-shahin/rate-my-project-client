@@ -38,18 +38,18 @@ const MultiSelectOption = ({
   }, [event, selectedOptions]);
   return (
     <div>
-      <label className='text-[18px] font-medium text-text-gray'>
+      <label className='lg:text-[18px] font-medium'>
         {label}{' '}
         {isRequired && label && (
           <span className='text-red-600 text-[22px] font-medium'>*</span>
         )}{' '}
       </label>
-      <div className='px-2 py-3 rounded border border-primary text-[12px] w-full relative bg-white flex justify-between items-center gap-2 mt-2'>
-        <div className='flex justify-start items-center gap-2 whitespace-nowrap overflow-x-auto max-w-[80%]'>
+      <div className='px-2 py-3 rounded border border-primary text-[12px] w-full relative bg-white flex justify-between items-center gap-2 mt-2 flex-wrap'>
+        <div className='flex justify-start items-center gap-2 flex-wrap max-w-[80%]'>
           {selectedOptions?.map((option, index) => (
             <span
               key={index}
-              className='bg-primary text-white px-5 py-1 rounded-full flex justify-center items-center gap-2 w-fit '
+              className='bg-tertiary text-white px-5 py-1 rounded-full flex justify-center items-center gap-2 w-fit '
             >
               {option}
               <AiOutlineClose
@@ -66,7 +66,7 @@ const MultiSelectOption = ({
           className={`text-[14px] relative pr-5 bg-primary text-white rounded-full`}
         >
           <select
-            className='w-fit cursor-pointer appearance-none px-5 outline-none bg-primary rounded-full pl-6 text-lg'
+            className='w-fit cursor-pointer appearance-none px-5 outline-none bg-primary rounded-full pl-6 lg:text-lg'
             name={name}
             onChange={handleFieldValueChange}
             id='multiSelect'

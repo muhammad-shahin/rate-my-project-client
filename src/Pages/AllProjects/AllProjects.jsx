@@ -1,32 +1,51 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import useAxios from '../../Hooks/useAxios';
-import { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
+import { useState } from 'react';
 import ProjectCard from '../../Components/ProjectCard/ProjectCard';
 import MultiSelectOption from '../../ReuseableUI/MultiSelectOption/MultiSelectOption';
+import Lottie from 'lottie-react';
+import notAvailableAnim from '../../assets/Animation/notAvailable.json';
+import loadingAnimation from '../../assets/Animation/loadingAnimation.json';
+import getAllProjects from '../../Api/getAllProjects';
+import { useQuery } from '@tanstack/react-query';
 
 const AllProjects = () => {
   const secureAxios = useAxios();
-  const [allProjectsData, setAllProjectsData] = useState([]);
-  const [filterData, setFilterData] = useState('');
+  // const [allProjectsData, setAllProjectsData] = useState([]);
+  const [filterDataMsg, setFilterDataMsg] = useState('');
+  const [filteredProjects, setFilteredProjects] = useState([]);
 
-  useEffect(() => {
-    secureAxios
-      .get('/projects')
-      .then((res) => {
-        setAllProjectsData(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Failed To Load All Porjects Data! Try Again',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      });
-  }, []);
+  // Fetch all projects
+  const { data: allProjectsData, isLoading: isAllProjectsLoading } = useQuery({
+    queryKey: ['allProjectsData'],
+    queryFn: getAllProjects,
+  });
+  if (isAllProjectsLoading) {
+    return (
+      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4'>
+        <h1 className='text-5xl text-center gradient-text'>
+          Loading Please Wait
+        </h1>
+        <Lottie
+          loop
+          animationData={loadingAnimation}
+        />
+      </div>
+    );
+  }
+  if (!allProjectsData || allProjectsData.length === 0) {
+    return (
+      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4 px-[5%]'>
+        <h1 className='text-5xl text-center gradient-text'>
+          No Data Available
+        </h1>
+        <Lottie
+          loop
+          animationData={notAvailableAnim}
+        />
+      </div>
+    );
+  }
 
   const handleFilterByCategory = (selected) => {
     const queryString = new URLSearchParams();
@@ -36,8 +55,8 @@ const AllProjects = () => {
       .get(`/projects/filter?${queryString.toString()}`)
       .then((res) => {
         console.log(res.data);
-        setAllProjectsData(res.data);
-        setFilterData(
+        setFilteredProjects(res.data);
+        setFilterDataMsg(
           `Total ${res.data.length} Assignment Found ${
             selected ? 'for ' + selected : ''
           }`
@@ -55,8 +74,8 @@ const AllProjects = () => {
       .get(`/projects/filter?${queryString.toString()}`)
       .then((res) => {
         console.log(res.data);
-        setAllProjectsData(res.data);
-        setFilterData(
+        setFilteredProjects(res.data);
+        setFilterDataMsg(
           `Total ${res.data.length} Assignment Found ${
             selected.length !== 0 ? 'for ' + selected : ''
           }`
@@ -67,11 +86,11 @@ const AllProjects = () => {
       });
   };
   return (
-    <section className='bg-[#eff2f39c] dark:bg-dark'>
+    <section className='bg-[#eff2f39c] dark:bg-dark px-[10%] xl:px-0'>
       <h1 className='lg:text-5xl text-2xl gradient-text text-center font-semibold py-2 pt-8'>
         All Assignments
       </h1>
-      <div className='w-fit mx-auto min-w-[250px] flex flex-wrap gap-6 mt-8'>
+      <div className='w-fit mx-auto min-w-[250px] flex justify-center items-center flex-wrap gap-6 mt-8'>
         <MultiSelectOption
           name='filterByCategory'
           optionsData={[
@@ -94,14 +113,17 @@ const AllProjects = () => {
           label='Filter By Difficulty'
         />
       </div>
-      {filterData && (
+      {filterDataMsg && (
         <p className='lg:text-3xl text-2xl gradient-text text-center font-semibold py-2 pt-8'>
-          {filterData}
+          {filterDataMsg}
         </p>
       )}
 
-      <div className='container mx-auto grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-center content-center w-[90%] lg:w-full'>
-        {allProjectsData?.map((project) => (
+      <div className='grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 lg:gap-6 xl:gap-10  lg:w-full container mx-auto'>
+        {(filteredProjects.length > 0
+          ? filteredProjects
+          : allProjectsData
+        )?.map((project) => (
           <ProjectCard
             key={project._id}
             projectData={project}
