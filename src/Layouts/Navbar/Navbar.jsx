@@ -52,7 +52,7 @@ const Navbar = () => {
               setOpen(false);
             }}
           >
-            <NavLink to='/submitted-projects'>Submitted Assignment</NavLink>
+            <NavLink to='/submitted-projects'>Submitted</NavLink>
           </li>
           <li
             className='text-lightBlack dark:text-white font-medium text-[12px] md:text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
@@ -77,6 +77,14 @@ const Navbar = () => {
             }}
           >
             <NavLink to='/my-projects'>My Assignment</NavLink>
+          </li>
+          <li
+            className='text-lightBlack dark:text-white font-medium text-[12px] md:text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            <NavLink to='/dashboard'>Dashboard</NavLink>
           </li>
           {user ? (
             ''

@@ -1,7 +1,8 @@
-import PreviewPdf from '../Components/PreviewPdf/PreviewPdf';
+
 import Root from '../Layouts/Root/Root';
 import AllProjects from '../Pages/AllProjects/AllProjects';
 import CreateProject from '../Pages/CreateProject/CreateProject';
+import Dashboard from '../Pages/Dashboard/Dashboard';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
@@ -49,8 +50,8 @@ const routes = [
         element: <SubmittedProjects />,
       },
       {
-        path: '/pdf',
-        element: <PreviewPdf />,
+        path: '/dashboard',
+        element: <Dashboard />,
       },
     ],
   },
