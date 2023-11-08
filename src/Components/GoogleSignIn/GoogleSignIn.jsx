@@ -24,9 +24,9 @@ const GoogleSignIn = () => {
           showConfirmButton: false,
           timer: 2000,
         });
-        const email = { userEmail: user.eamil };
+        const id = { userId: user.uid };
         secureAxios
-          .post('/jwt', email)
+          .post('/jwt', id)
           .then((res) => {
             console.log(res.data);
             Swal.fire({

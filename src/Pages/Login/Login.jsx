@@ -32,9 +32,10 @@ const Login = () => {
     loginUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        const email = { userEmail: user.eamil };
+        const id = { userId: user.uid };
+        console.log(id);
         secureAxios
-          .post('/jwt', email)
+          .post('/jwt', id)
           .then((res) => {
             console.log(res.data);
             setShowModal(false);

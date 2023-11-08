@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 import notAvailableAnim from '../../assets/Animation/notAvailable.json';
 import loadingAnimation from '../../assets/Animation/loadingAnimation.json';
 import DashboardCard from './DashboardCard';
+import Heading from '../../ReuseableUI/Heading/Heading';
 
 const Dashboard = () => {
   const userData = JSON.parse(localStorage.getItem('userData'));
@@ -44,9 +45,13 @@ const Dashboard = () => {
   }
   return (
     <section className='bg-[#eff2f39c] dark:bg-dark'>
-      <h1 className='lg:text-5xl text-2xl gradient-text text-center font-semibold py-2 pt-8 px-[10%] xl:px-0'>
+      {/* <h1 className='lg:text-5xl text-2xl gradient-text text-center font-semibold py-2 pt-8 px-[10%] xl:px-0'>
         My Dashboard
-      </h1>
+      </h1> */}
+      <Heading
+        title='My Dashboard'
+        subTitle='Assignment Created By You'
+      />
 
       <div className='grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 lg:gap-6 xl:gap-10  lg:w-full container mx-auto'>
         {Array.isArray(myCreatedProjectsData)

@@ -46,9 +46,9 @@ const SignUp = () => {
       createUser(email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          const email = { userEmail: user.eamil };
+          const id = { userId: user.uid };
           secureAxios
-            .post('/jwt', email)
+            .post('/jwt', id)
             .then((res) => {
               console.log(res.data);
               setShowModal(false);

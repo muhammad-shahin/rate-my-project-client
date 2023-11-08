@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { signOut } from 'firebase/auth';
 import { auth } from '../Configs/firebase.config';
 
+const userData = JSON.parse(localStorage.getItem('userData'));
 const secureAxios = axios.create({
   baseURL: 'http://localhost:5000',
   withCredentials: true,
@@ -11,6 +12,11 @@ const secureAxios = axios.create({
 
 const useAxios = (navigate) => {
   useEffect(() => {
+    secureAxios.interceptors.request.use((config) => {
+      // Add user UID as a query parameter to every request
+      config.params = { ...config.params, userId: userData?.uid };
+      return config;
+    });
     secureAxios.interceptors.response.use(
       (res) => {
         return res;
