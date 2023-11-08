@@ -34,8 +34,8 @@ const Navbar = () => {
         </div>
         {/* nav items */}
         <ul
-          className={` xl:static absolute top-[75px] ${
-            isOpen ? 'right-0' : 'right-[-100%] scale-0'
+          className={` xl:static fixed top-[75px] ${
+            isOpen ? 'right-0' : 'right-[-100%]'
           } xl:h-auto h-screen xl:w-auto w-[50%] flex xl:flex-row flex-col bg-gray-200 dark:bg-[#00aaff6c] backdrop-blur-[25px] xl:px-5 py-2 justify-start xl:justify-center items-center duration-700 z-[100] xl:rounded-full xl:pt-2 pt-10 text-white`}
         >
           <li
