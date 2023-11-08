@@ -15,7 +15,7 @@ const SubmittedProjects = () => {
   console.log(submittedProjects);
   if (isLoading) {
     return (
-      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4'>
+      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4 px-[5%]'>
         <h1 className='text-5xl text-center gradient-text'>
           Loading Please Wait
         </h1>
@@ -28,7 +28,7 @@ const SubmittedProjects = () => {
   }
   if (!submittedProjects || submittedProjects.length === 0) {
     return (
-      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4'>
+      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4  px-[5%]'>
         <h1 className='text-4xl text-center gradient-text font-semibold'>
           No Subitted Data Available
         </h1>

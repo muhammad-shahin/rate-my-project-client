@@ -1,4 +1,3 @@
-
 import MyProjectCard from '../../Components/MyProjectCard/MyProjectCard';
 import { useQuery } from '@tanstack/react-query';
 import getMyProjectsData from '../../Api/getMyProjectsData';
@@ -29,7 +28,7 @@ const MyProjects = () => {
   }
   if (!myProjectsData || myProjectsData.length === 0) {
     return (
-      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4'>
+      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4 px-[5%]'>
         <h1 className='text-5xl text-center gradient-text'>
           No Data Available
         </h1>
@@ -42,7 +41,7 @@ const MyProjects = () => {
   }
   return (
     <section className='bg-[#eff2f39c] dark:bg-dark'>
-      <h1 className='lg:text-5xl text-2xl gradient-text text-center font-semibold py-2 pt-8'>
+      <h1 className='lg:text-5xl text-2xl gradient-text text-center font-semibold py-2 pt-8  px-[5%]'>
         My Submitted Assignments
       </h1>
 

@@ -10,8 +10,11 @@ import Input from '../Input/Input';
 import PreviewPdf from '../PreviewPdf/PreviewPdf';
 import useAxios from '../../Hooks/useAxios';
 import Swal from 'sweetalert2';
+import { useQueryClient } from '@tanstack/react-query';
 
 const SubmittedProjectCard = ({ projectData }) => {
+  const userData = JSON.parse(localStorage.getItem('userData'));
+  const queryClient = useQueryClient();
   const secureAxios = useAxios();
   const [modalStatus, setModalStatus] = useState(false);
   const [fileModalStatus, setFileModalStatus] = useState(false);
@@ -35,7 +38,7 @@ const SubmittedProjectCard = ({ projectData }) => {
     const updateSubmitted = { givenMarks, feedback };
     console.log(updateSubmitted);
     secureAxios
-      .put('/submitted-projects', updateSubmitted)
+      .put(`/pending-submit/${_id}`, updateSubmitted)
       .then((res) => {
         console.log(res);
         if (res.data.acknowledged) {
@@ -48,6 +51,7 @@ const SubmittedProjectCard = ({ projectData }) => {
             showConfirmButton: false,
             timer: 1500,
           });
+          queryClient.invalidateQueries(['submittedProjects', userData]);
         }
       })
       .catch((error) => {

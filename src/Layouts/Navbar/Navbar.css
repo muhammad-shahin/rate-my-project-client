@@ -18,7 +18,11 @@ nav a.active::after {
   font-size: 24px;
   transition: all 0.5s linear;
 }
-
+@media (min-width: 320px) and (max-width: 500px) {
+  nav a.active {
+    padding: 4px 8px;
+  }
+}
 .grad-bg {
   @apply hover:bg-gradient-to-r hover:from-[#3fbefd] hover:to-[#aa94f7] duration-500;
 }

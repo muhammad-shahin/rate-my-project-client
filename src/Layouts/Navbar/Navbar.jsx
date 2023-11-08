@@ -16,7 +16,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <header className=''>
+    <header className='relative'>
       <nav className='py-3 container mx-auto flex justify-between items-center w-[90%] xl:w-auto text-black dark:text-white'>
         {/* logo */}
         <div
@@ -35,11 +35,11 @@ const Navbar = () => {
         {/* nav items */}
         <ul
           className={` xl:static absolute top-[75px] ${
-            isOpen ? 'right-0' : 'right-[-100%]'
+            isOpen ? 'right-0' : 'right-[-100%] scale-0'
           } xl:h-auto h-screen xl:w-auto w-[50%] flex xl:flex-row flex-col bg-gray-200 dark:bg-[#00aaff6c] backdrop-blur-[25px] xl:px-5 py-2 justify-start xl:justify-center items-center duration-700 z-[100] xl:rounded-full xl:pt-2 pt-10 text-white`}
         >
           <li
-            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            className='text-lightBlack dark:text-white font-medium text-[12px] md:text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
             onClick={() => {
               setOpen(false);
             }}
@@ -47,7 +47,7 @@ const Navbar = () => {
             <NavLink to='/'>Home</NavLink>
           </li>
           <li
-            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            className='text-lightBlack dark:text-white font-medium text-[12px] md:text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
             onClick={() => {
               setOpen(false);
             }}
@@ -55,7 +55,7 @@ const Navbar = () => {
             <NavLink to='/submitted-projects'>Submitted Assignment</NavLink>
           </li>
           <li
-            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            className='text-lightBlack dark:text-white font-medium text-[12px] md:text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
             onClick={() => {
               setOpen(false);
             }}
@@ -63,7 +63,7 @@ const Navbar = () => {
             <NavLink to='/all-projects'>All Assignment</NavLink>
           </li>
           <li
-            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            className='text-lightBlack dark:text-white font-medium text-[12px] md:text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
             onClick={() => {
               setOpen(false);
             }}
@@ -71,7 +71,7 @@ const Navbar = () => {
             <NavLink to='/create-project'>Create Assignment</NavLink>
           </li>
           <li
-            className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+            className='text-lightBlack dark:text-white font-medium text-[12px] md:text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
             onClick={() => {
               setOpen(false);
             }}
@@ -82,7 +82,7 @@ const Navbar = () => {
             ''
           ) : (
             <li
-              className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
+              className='text-lightBlack dark:text-white font-medium text-[12px] md:text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'
               onClick={() => {
                 setOpen(false);
               }}

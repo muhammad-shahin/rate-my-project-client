@@ -14,6 +14,7 @@ const MyProjectCard = ({ projectData }) => {
     creatorName,
     creatorEmail,
     creatorPhotoUrl,
+    feedback,
   } = projectData;
   return (
     <div className='my-10'>
@@ -105,6 +106,7 @@ const MyProjectCard = ({ projectData }) => {
               <TextBox
                 label='Examinner Feedback'
                 readOnly={true}
+                value={feedback}
               />
             </div>
           )}
