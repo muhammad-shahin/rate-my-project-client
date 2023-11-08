@@ -13,14 +13,18 @@ const UserProfile = () => {
     <div
       className={`rounded bg-blue-200 backdrop-blur-[25px] bg-opacity-[0.69] p-5 text-center relative z-50`}
     >
-      {user?.photoURL !== null ? <img
-        src={user?.photoURL}
-        className='rounded-full w-[64px] object-cover mx-auto'
-      /> : <VscAccount
-      className={`text-[64px] text-sky-500 cursor-pointer rounded-full text-center mx-auto ${
-        showProfile && 'bg-blue-500 text-white'
-      }`}
-    />}
+      {user?.photoURL !== null ? (
+        <img
+          src={user?.photoURL}
+          className='rounded-full w-[64px] object-cover mx-auto'
+        />
+      ) : (
+        <VscAccount
+          className={`text-[64px] text-sky-500 cursor-pointer rounded-full text-center mx-auto ${
+            showProfile && 'bg-primary text-white'
+          }`}
+        />
+      )}
       <p className='font-medium text-[14px] mt-2'>Profile Status</p>
       <p
         className={`${
@@ -39,22 +43,22 @@ const UserProfile = () => {
       <div className='flex flex-col gap-2 mt-3'>
         <NavLink
           className=' font-medium text-[18px] flex justify-center items-center gap-3'
-          to='/addProduct'
+          to='/dashboard'
         >
           <RiDashboardFill />
-          Add New Product
+          Dashboard
         </NavLink>
         <NavLink
           className=' font-medium text-[18px] flex justify-center items-center gap-3'
-          to='/cart'
+          to='/my-projects'
         >
           <AiOutlineShoppingCart />
-          View Cart
+          My Assignment
         </NavLink>
       </div>
       <hr className='w-full h-[2px] bg-gray-300 mt-3' />
       <button
-        className='px-5 py-2 bg-gray-500 rounded-full font-medium text-white hover:scale-[1.1] hover:bg-red-500 duration-700 my-4'
+        className='px-5 py-2 bg-tertiary rounded-full font-medium text-white hover:scale-[1.1] hover:bg-red-500 duration-700 my-4'
         onClick={() => {
           logoutUser();
         }}

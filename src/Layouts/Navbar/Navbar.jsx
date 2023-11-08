@@ -138,7 +138,7 @@ const Navbar = () => {
             />
           )}
           {user && showProfile ? (
-            <div className='absolute lg:top-[100px] top-[90px] right-0'>
+            <div className='absolute lg:top-[90px] top-[80px] lg:right-[180px] sm:right-[20px] right-0'>
               <UserProfile />
             </div>
           ) : (
