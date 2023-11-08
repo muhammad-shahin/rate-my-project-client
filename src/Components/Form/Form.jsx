@@ -50,6 +50,8 @@ const Form = ({
                 isRequired={fields.isRequired}
                 defaultOption={fields.defaultOption}
                 optionsData={fields.optionsData}
+                defaultValue={fields.defaultValue}
+                message={fields.message}
               />
             ))}
 

@@ -8,6 +8,7 @@ const TextBox = ({
   isRequired,
   message,
   readOnly,
+  defaultValue,
 }) => {
   return (
     <div className='flex flex-col gap-1 w-full'>
@@ -28,6 +29,7 @@ const TextBox = ({
           onChange={handleChange}
           required={isRequired}
           readOnly={readOnly}
+          defaultValue={defaultValue}
         ></textarea>
       </div>
       {message && (
@@ -46,5 +48,7 @@ TextBox.propTypes = {
   message: PropTypes.string,
   handleChange: PropTypes.func,
   isRequired: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  defaultValue: PropTypes.string,
 };
 export default TextBox;

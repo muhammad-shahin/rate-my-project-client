@@ -37,6 +37,7 @@ const FileUpload = ({ name, label, handleChange, isRequired, message }) => {
           setSuccess(`Uploaded Successfully. Continue to Next Step`);
           setDisableUpload(false);
           setUploadedImageUrl(url);
+          message = url;
           // handleChange(null, name, url);
         })
         .catch((error) => {
@@ -83,7 +84,9 @@ const FileUpload = ({ name, label, handleChange, isRequired, message }) => {
       )}
       {error && <p className='text-[12px] text-red-600 text-center'>{error}</p>}
       {message && (
-        <p className='text-[14px] font-medium text-purple mt-1'>{message}</p>
+        <p className='text-[14px] font-medium text-purple mt-1'>
+          {message.slice(0, 80)}...
+        </p>
       )}
     </div>
   );

@@ -107,7 +107,7 @@ const DashboardCard = ({ projectData }) => {
           {/* actions buttons */}
           <div className='flex-bet gap-2 md:gap-0'>
             <PrimaryButton
-              handleOnClick={() => navigate(`/project-details/${_id}`)}
+              handleOnClick={() => navigate(`/update/${_id}`)}
               text='Update'
               icon={<BsCloudUpload className='text-white' />}
             />

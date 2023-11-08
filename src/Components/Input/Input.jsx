@@ -20,6 +20,8 @@ const Input = ({
   clearValue,
   readOnly,
   value,
+  defaultValue,
+  message,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   if (type === 'file') {
@@ -29,6 +31,7 @@ const Input = ({
         isRequired={isRequired}
         handleChange={onChange}
         name={name}
+        message={message}
       />
     );
   }
@@ -41,6 +44,7 @@ const Input = ({
         name={name}
         optionsData={optionsData}
         defaultOption={defaultOption}
+        defaultValue={defaultValue}
       />
     );
   }
@@ -52,6 +56,7 @@ const Input = ({
         handleChange={onChange}
         name={name}
         placeholder={placeholder}
+        defaultValue={defaultValue}
       />
     );
   }
@@ -64,6 +69,7 @@ const Input = ({
         isRequired={isRequired}
         handleChange={onChange}
         placeholder={placeholder}
+        defaultValue={defaultValue}
       />
     );
   }
@@ -101,7 +107,7 @@ const Input = ({
         required={isRequired}
         id={name}
         readOnly={readOnly}
-        value={value}
+        defaultValue={defaultValue}
       />
       {type === 'password' && (
         <AiFillEye
@@ -135,6 +141,7 @@ Input.propTypes = {
   isRequired: PropTypes.bool,
   clearValue: PropTypes.bool,
   readOnly: PropTypes.bool,
+  defaultValue: PropTypes.any,
 };
 
 export default Input;

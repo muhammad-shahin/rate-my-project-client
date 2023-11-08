@@ -1,4 +1,3 @@
-
 import Root from '../Layouts/Root/Root';
 import AllProjects from '../Pages/AllProjects/AllProjects';
 import CreateProject from '../Pages/CreateProject/CreateProject';
@@ -10,6 +9,7 @@ import MyProjects from '../Pages/MyProjects/MyProjects';
 import ProjectDetails from '../Pages/ProjectDetails/ProjectDetails';
 import SignUp from '../Pages/SignUp/SignUp';
 import SubmittedProjects from '../Pages/SubmittedProjects/SubmittedProjects';
+import UpdateProject from '../Pages/UpdateProject/UpdateProject';
 
 const routes = [
   {
@@ -52,6 +52,10 @@ const routes = [
       {
         path: '/dashboard',
         element: <Dashboard />,
+      },
+      {
+        path: '/update/:projectId',
+        element: <UpdateProject />,
       },
     ],
   },

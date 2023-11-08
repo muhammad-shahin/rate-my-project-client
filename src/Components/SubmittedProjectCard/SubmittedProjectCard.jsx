@@ -40,7 +40,6 @@ const SubmittedProjectCard = ({ projectData }) => {
     secureAxios
       .put(`/pending-submit/${_id}`, updateSubmitted)
       .then((res) => {
-        console.log(res);
         if (res.data.acknowledged) {
           form.reset();
           setModalStatus(false);

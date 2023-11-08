@@ -10,6 +10,7 @@ const SelectOptions = ({
   isRequired,
   defaultOption,
   message,
+  defaultValue,
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -34,7 +35,7 @@ const SelectOptions = ({
             setOpen(false);
           }}
         >
-          <option value=''>{defaultOption}</option>
+          <option value={defaultValue}>{defaultOption}</option>
           {optionsData?.map((district, index) => (
             <option
               key={index}
