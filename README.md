@@ -25,14 +25,67 @@ c. **Assignment Updating**
 - Any user can update any assignment.
 - Input fields are filled with previous assignment data for editing.
 
-### Taking Assignment as an Individual 📝
+### Taking Assignment as an Individual
 - Users can visit the assignment page and filter assignments based on their difficulty level.
 - Assignment cards display the thumbnail, title, marks, assignment difficulty level, and "View Assignment" and "Update Assignment" buttons.
 - Users can click "View Assignment" to see assignment details and click "Take Assignment" to submit it.
 
-### Marking Assignment 📊
+### Marking Assignment
 - The submitted assignments page displays all pending assignments.
 - Users can give marks, feedback, and submit assignments.
 
-### Pages 📄
+### Pages
 1. **Home Page** (Public)
+   - Navbar with links, logo, and user profile image
+   - Banner, feature section, FAQ, and footer
+
+2. **Create Assignment Page** (Private)
+   - Functionality for creating assignments
+
+3. **All Assignments Page** (Public)
+   - List of all assignments created by any user
+   - Pagination for assignments
+
+4. **My Assignment Page** (Private)
+   - List of assignments submitted by the user
+
+5. **Submitted Assignment Page** (Private)
+   - List of pending assignments submitted by any user
+
+6. Additional dynamic pages for updating and viewing individual assignments
+
+7. Login and Registration Pages (Public)
+
+## Technologies Used 🛠️
+- React (Frontend)
+- Tailwind CSS (Styling)
+- Node.js (Backend)
+- Firebase (Authentication)
+- Express.js (Backend)
+- JWT for securing API
+
+## Additional Features 🌟
+
+2. Previewing Docs or PDF
+   - Implemented a resource preview for submitted assignments using React PDF.
+
+3. Pagination
+   - Implemented pagination on the "All Assignments" page.
+
+4. Validation
+   - Added validation for the create assignment form and registration form.
+
+5. Responsiveness
+   - Made the website fully responsive for mobile, tablet, and desktop views.
+
+6. JWT Authentication
+   - Implemented JWT token creation and storage on the client-side for email/password-based and social login.
+
+## Optional Features
+Choose any two of the following optional features:
+1. Added a spinner for loading states.
+2. Explored and implemented animations using Framer Motion.
+3. Explored and implemented Tanstack query mutations in the API.
+4. Added an extra feature of your own to differentiate the project.
+
+Feel free to explore the project and visit the live site to experience the online group study assignment website. 👩‍💻👨‍💻
