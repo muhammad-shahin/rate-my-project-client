@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   AiOutlineSmile,
   AiOutlineMeh,
@@ -77,7 +78,6 @@ const ProjectDetails = () => {
         creatorEmail,
         creatorPhotoUrl,
       };
-      console.log(newSubmit);
       secureAxios
         .post('/submitted-projects', newSubmit)
         .then((res) => {

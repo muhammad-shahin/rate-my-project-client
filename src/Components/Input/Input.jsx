@@ -18,6 +18,8 @@ const Input = ({
   defaultOption = 'Select Option',
   isRequired,
   clearValue,
+  readOnly,
+  value,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   if (type === 'file') {
@@ -98,6 +100,8 @@ const Input = ({
         onBlur={onBlur}
         required={isRequired}
         id={name}
+        readOnly={readOnly}
+        value={value}
       />
       {type === 'password' && (
         <AiFillEye
@@ -123,12 +127,14 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   errorMessage: PropTypes.string,
   labelText: PropTypes.string,
+  value: PropTypes.any,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
   optionsData: PropTypes.array,
   defaultOption: PropTypes.string,
   isRequired: PropTypes.bool,
   clearValue: PropTypes.bool,
+  readOnly: PropTypes.bool,
 };
 
 export default Input;

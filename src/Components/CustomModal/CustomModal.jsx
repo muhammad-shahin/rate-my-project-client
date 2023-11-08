@@ -27,7 +27,7 @@ const CustomModal = ({
       className='sticky top-0 left-0 w-full h-full bg-transparent'
     >
       <div className='w-full h-full flex justify-center items-center'>
-        <div className='w-fit bg-white rounded-lg'>
+        <div className='w- bg-white rounded-lg'>
           <FcInfo className='relative mx-auto -top-8 w-[48px] text-[68px]' />
           <div className='p-5 text-center space-y-4'>
             <h2 className='text-3xl'>{title}</h2>

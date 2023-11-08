@@ -52,7 +52,7 @@ const Navbar = () => {
               setOpen(false);
             }}
           >
-            <NavLink to='/my-assignment'>My Assignment</NavLink>
+            <NavLink to='/submitted-projects'>Submitted Assignment</NavLink>
           </li>
           <li
             className='text-lightBlack dark:text-white font-medium text-[16px] nav-item grad-bg duration-500 hover:text-white rounded-full px-5 py-2'

@@ -3,10 +3,10 @@ import Swal from 'sweetalert2';
 
 const userData = JSON.parse(localStorage.getItem('userData'));
 
-const getMyProjectsData = async () => {
+const getPendingSubmit = async () => {
   try {
     const response = await axiosInstance.get(
-      `/my-submitted-projects/${userData.email}`
+      `/pending-submit/${userData.email}`
     );
     return response.data;
   } catch (error) {
@@ -15,7 +15,7 @@ const getMyProjectsData = async () => {
     Swal.fire({
       position: 'center',
       icon: 'error',
-      title: 'Failed To Load My Porjects Data! Try Again',
+      title: 'Failed To Load Pending Submitted Porjects Data! Try Again',
       showConfirmButton: false,
       timer: 1500,
     });
@@ -23,4 +23,4 @@ const getMyProjectsData = async () => {
   }
 };
 
-export default getMyProjectsData;
+export default getPendingSubmit;

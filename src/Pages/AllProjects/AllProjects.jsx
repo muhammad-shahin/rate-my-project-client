@@ -1,7 +1,4 @@
-import { AiOutlineFrown, AiOutlinePlus } from 'react-icons/ai';
-import { SlCalender, SlActionRedo } from 'react-icons/sl';
-import { BiCategory, BiMedal } from 'react-icons/bi';
-import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
+/* eslint-disable react-hooks/exhaustive-deps */
 import useAxios from '../../Hooks/useAxios';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
@@ -11,7 +8,6 @@ import MultiSelectOption from '../../ReuseableUI/MultiSelectOption/MultiSelectOp
 const AllProjects = () => {
   const secureAxios = useAxios();
   const [allProjectsData, setAllProjectsData] = useState([]);
-  const [displayData, setDisplayData] = useState([]);
   const [filterData, setFilterData] = useState('');
 
   useEffect(() => {

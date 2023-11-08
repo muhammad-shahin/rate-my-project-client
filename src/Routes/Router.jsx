@@ -1,3 +1,4 @@
+import PreviewPdf from '../Components/PreviewPdf/PreviewPdf';
 import Root from '../Layouts/Root/Root';
 import AllProjects from '../Pages/AllProjects/AllProjects';
 import CreateProject from '../Pages/CreateProject/CreateProject';
@@ -7,6 +8,7 @@ import Login from '../Pages/Login/Login';
 import MyProjects from '../Pages/MyProjects/MyProjects';
 import ProjectDetails from '../Pages/ProjectDetails/ProjectDetails';
 import SignUp from '../Pages/SignUp/SignUp';
+import SubmittedProjects from '../Pages/SubmittedProjects/SubmittedProjects';
 
 const routes = [
   {
@@ -41,6 +43,14 @@ const routes = [
       {
         path: '/my-projects',
         element: <MyProjects />,
+      },
+      {
+        path: '/submitted-projects',
+        element: <SubmittedProjects />,
+      },
+      {
+        path: '/pdf',
+        element: <PreviewPdf />,
       },
     ],
   },

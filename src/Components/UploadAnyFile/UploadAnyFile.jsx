@@ -13,7 +13,6 @@ const UploadAnyFile = ({
 }) => {
   const [error, setError] = useState(null);
   const [disableUpload, setDisableUpload] = useState(false);
-  const [uploadedfileUrl, setUploadedFileUrl] = useState(null);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -38,8 +37,7 @@ const UploadAnyFile = ({
         .then((url) => {
           setFileSuccess(`${name} Upload successful.`);
           setDisableUpload(false);
-          setUploadedFileUrl(url);
-          handleChange(url); // Only pass the URL to the handleChange function
+          handleChange(url);
         })
         .catch((error) => {
           setError(error.message);

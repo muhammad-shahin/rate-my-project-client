@@ -1,22 +1,16 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Form from '../../Components/Form/Form';
 import ProjectCard from '../../Components/ProjectCard/ProjectCard';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useAxios from '../../Hooks/useAxios';
 import Swal from 'sweetalert2';
 
 const CreateProject = () => {
   const secureAxios = useAxios();
-  const { user } = useContext(AuthContext);
 
   const [clearRichTextBox, setClearRichTextBox] = useState(false);
   // Load the data from local storage when the component mounts
-  useEffect(() => {
-    const storedData = localStorage.getItem('createProjectData');
-    if (storedData) {
-      setCreateProjectData(JSON.parse(storedData));
-    }
-  }, []);
+  const userData = JSON.parse(localStorage.getItem('userData'));
+  console.log(userData.email);
   const [createProjectData, setCreateProjectData] = useState({
     projectTitle: 'Your Title Will Add Here',
     projectDescription: 'Your Description Will Add Here',
@@ -26,10 +20,11 @@ const CreateProject = () => {
     dueDate: '3 Nov, 2023',
     category: 'Programming',
     totalMarks: '60',
-    creatorName: user?.displayName,
-    creatorEmail: user?.email,
-    creatorPhotoUrl: user?.photoURL,
+    creatorName: userData.displayName,
+    creatorEmail: userData.email,
+    creatorPhotoUrl: userData.photoURL,
   });
+  console.log(createProjectData);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -61,12 +56,6 @@ const CreateProject = () => {
         });
       });
   };
-  useEffect(() => {
-    localStorage.setItem(
-      'createProjectData',
-      JSON.stringify(createProjectData)
-    );
-  }, [createProjectData]);
   // show password regular expression error
   const handleFieldValueChange = (e, customName, customValue) => {
     if (!e && customName === 'dueDate') {
@@ -171,29 +160,6 @@ Use Heading, Bullet Points so that participant can understand your assignment be
       clearValue: clearRichTextBox,
     },
   ]);
-  useEffect(() => {
-    if (clearRichTextBox) {
-      // Manually clear the RichTextBox by updating the fields
-      const newProjectCreationFields = projectCreationFields.map((field) => {
-        if (field.name === 'requirements') {
-          // Replace the old 'requirements' field with a new one
-          return {
-            name: 'requirements',
-            type: 'richtextbox',
-            placeholder: `Write Details Assignment Requirements.
-            Use Heading, Bullet Points so that participants can understand your assignment better`,
-            onChange: handleFieldValueChange,
-            labelText: 'Write Assignment Requirements',
-            isRequired: false,
-          };
-        }
-        return field; // Keep the other fields as they are
-      });
-
-      setProjectCreationFields(newProjectCreationFields);
-      setClearRichTextBox(false);
-    }
-  }, [clearRichTextBox]);
   return (
     <div className=''>
       <Form
