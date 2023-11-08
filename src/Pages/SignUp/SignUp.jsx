@@ -9,8 +9,10 @@ import Modal from '../../Services/Utility/Modal';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Form from '../../Components/Form/Form';
 import signUpAnim from '../../assets/Animation/registration.json';
+import useAxios from '../../Hooks/useAxios';
 
 const SignUp = () => {
+  const secureAxios = useAxios();
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
@@ -44,7 +46,25 @@ const SignUp = () => {
       createUser(email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+          const email = { userEmail: user.eamil };
+          secureAxios
+            .post('/jwt', email)
+            .then((res) => {
+              console.log(res.data);
+              setShowModal(false);
+            })
+            .catch((error) => {
+              console.log(error.response);
+              setShowModal(false);
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Failed To Generate Token',
+                text: `Failed To Generate Token. Please Try Again. Error Message: ${error.response.data.message}`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            });
           updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: profilePicture,
@@ -62,7 +82,8 @@ const SignUp = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          navigate('/login');
+          // navigate after login
+          navigate(location?.state ? location?.state : '/');
         })
         .catch((error) => {
           firebaseAuthError(error.code);
