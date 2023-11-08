@@ -6,7 +6,7 @@ import { auth } from '../Configs/firebase.config';
 
 const userData = JSON.parse(localStorage.getItem('userData'));
 const secureAxios = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://rate-my-project-server.vercel.app',
   withCredentials: true,
 });
 
