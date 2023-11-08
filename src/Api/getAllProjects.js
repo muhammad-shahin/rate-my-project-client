@@ -1,9 +1,9 @@
 import axiosInstance from './axiosInstance';
 import Swal from 'sweetalert2';
 
-const getAllProjects = async () => {
+const getAllProjects = async (currentPage) => {
   try {
-    const response = await axiosInstance.get(`/projects`);
+    const response = await axiosInstance.get(`/projects?page=${currentPage}`);
     return response.data;
   } catch (error) {
     console.log(error);

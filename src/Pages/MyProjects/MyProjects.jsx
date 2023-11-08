@@ -30,7 +30,7 @@ const MyProjects = () => {
     return (
       <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4 px-[5%]'>
         <h1 className='text-5xl text-center gradient-text'>
-          No Data Available
+          No Assignment Data Available
         </h1>
         <Lottie
           loop
