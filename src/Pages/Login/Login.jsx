@@ -33,6 +33,13 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Successfully Login With Google',
+          showConfirmButton: false,
+          timer: 2000,
+        });
         // navigate after login
         navigate(location?.state ? location?.state : '/');
       })

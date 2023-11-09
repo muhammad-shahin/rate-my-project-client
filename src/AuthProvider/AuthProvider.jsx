@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState } from 'react';
 import { auth } from '../Configs/firebase.config';
 import PropTypes from 'prop-types';
@@ -82,9 +83,13 @@ const AuthProvider = ({ children }) => {
         setUser(null);
         setLoading(false);
         secureAxios
-          .post('/logout', {})
-          .then(() => {})
-          .catch((error) => console.log(error.message));
+          .post('/logout')
+          .then((res) => {
+            console.log('Logout success response: ', res.data);
+          })
+          .catch((error) => {
+            console.log('Logout error response : ', error.response);
+          });
       }
     });
     return () => unsubscriber();

@@ -17,7 +17,6 @@ import PropTypes from 'prop-types';
 import UploadAnyFile from '../../Components/UploadAnyFile/UploadAnyFile';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
-import axios from 'axios';
 
 // dangerous html set
 function DangerousHTML({ htmlContent }) {
@@ -45,16 +44,6 @@ const ProjectDetails = () => {
         console.log(error);
       });
   }, []);
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://rate-my-project-server.vercel.app/${projectId}`)
-  //     .then((res) => {
-  //       setProjectData(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
   const {
     projectTitle,
     projectDescription,
