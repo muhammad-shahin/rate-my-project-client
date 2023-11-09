@@ -8,7 +8,7 @@ import {
 import { SlCalender } from 'react-icons/sl';
 import { BiCategory, BiMedal } from 'react-icons/bi';
 import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import CustomModal from '../../Components/CustomModal/CustomModal';
@@ -24,6 +24,7 @@ function DangerousHTML({ htmlContent }) {
 }
 
 const ProjectDetails = () => {
+  const navigate = useNavigate();
   const secureAxios = useAxios();
   const { projectId } = useParams();
   const [projectData, setProjectData] = useState({});
@@ -98,6 +99,7 @@ const ProjectDetails = () => {
               showConfirmButton: false,
               timer: 1500,
             });
+            navigate('/my-projects');
           }
         })
         .catch((error) => {
