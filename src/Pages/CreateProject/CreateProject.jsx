@@ -10,7 +10,6 @@ const CreateProject = () => {
   const [clearRichTextBox, setClearRichTextBox] = useState(false);
   // Load the data from local storage when the component mounts
   const userData = JSON.parse(localStorage.getItem('userData'));
-  console.log(userData.email);
   const [createProjectData, setCreateProjectData] = useState({
     projectTitle: 'Your Title Will Add Here',
     projectDescription: 'Your Description Will Add Here',
@@ -24,15 +23,12 @@ const CreateProject = () => {
     creatorEmail: userData.email,
     creatorPhotoUrl: userData.photoURL,
   });
-  console.log(createProjectData);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log(createProjectData);
     secureAxios
       .post('/projects', createProjectData)
       .then((res) => {
-        console.log(res);
         if (res.data.acknowledged) {
           Swal.fire({
             position: 'center',

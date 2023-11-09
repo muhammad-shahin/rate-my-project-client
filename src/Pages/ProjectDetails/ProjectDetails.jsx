@@ -17,6 +17,7 @@ import PropTypes from 'prop-types';
 import UploadAnyFile from '../../Components/UploadAnyFile/UploadAnyFile';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 // dangerous html set
 function DangerousHTML({ htmlContent }) {
@@ -34,11 +35,26 @@ const ProjectDetails = () => {
   const [fileSuccess, setFileSuccess] = useState(null);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    secureAxios.get(`/project/${projectId}`).then((res) => {
-      console.log(res);
-      setProjectData(res.data);
-    });
+    secureAxios
+      .get(`/project/${projectId}`)
+      .then((res) => {
+        console.log(res);
+        setProjectData(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://rate-my-project-server.vercel.app/${projectId}`)
+  //     .then((res) => {
+  //       setProjectData(res.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
   const {
     projectTitle,
     projectDescription,
@@ -96,6 +112,7 @@ const ProjectDetails = () => {
           }
         })
         .catch((error) => {
+          setModalStatus(false);
           console.log(error);
           Swal.fire({
             position: 'center',
@@ -148,7 +165,9 @@ const ProjectDetails = () => {
           <h2 className='lg:text-2xl xl:text-4xl text-lg font-semibold xl:font-bold  gradient-text uppercase text-center'>
             {projectTitle}
           </h2>
-          <p className='text-center dark:text-white max-w-2xl mx-auto'>{projectDescription}</p>
+          <p className='text-center dark:text-white max-w-2xl mx-auto'>
+            {projectDescription}
+          </p>
 
           <div className='flex flex-wrap justify-center items-center gap-1 lg:gap-2 xl:gap-6 md:gap-3'>
             {/* difficulty level */}

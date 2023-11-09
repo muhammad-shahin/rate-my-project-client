@@ -1,6 +1,7 @@
 import { Document, Page, pdfjs } from 'react-pdf';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 // Ensure you set the worker source for pdfjs
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -9,6 +10,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 const PreviewPdf = ({ pdfUrl }) => {
+  const { pdfURL } = useParams();
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const onDocumentLoadSuccess = ({ numPages }) => {
@@ -18,10 +20,14 @@ const PreviewPdf = ({ pdfUrl }) => {
   return (
     <div className='w-full'>
       <Document
-        file={pdfUrl}
+        file={pdfUrl ? pdfUrl : pdfURL}
         onLoadSuccess={onDocumentLoadSuccess}
       >
-        <Page pageNumber={pageNumber} />
+        <Page
+          pageNumber={pageNumber}
+          renderTextLayer={false}
+          renderAnnotationLayer={false}
+        />
       </Document>
       <p>
         Page {pageNumber} of {numPages}

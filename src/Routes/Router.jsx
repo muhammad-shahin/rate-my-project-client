@@ -1,3 +1,4 @@
+import PreviewPdf from '../Components/PreviewPdf/PreviewPdf';
 import Root from '../Layouts/Root/Root';
 import AllProjects from '../Pages/AllProjects/AllProjects';
 import CreateProject from '../Pages/CreateProject/CreateProject';
@@ -79,6 +80,14 @@ const routes = [
         element: (
           <PrivateRoute>
             <UpdateProject />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/pdf/:pdfURL',
+        element: (
+          <PrivateRoute>
+            <PreviewPdf />
           </PrivateRoute>
         ),
       },

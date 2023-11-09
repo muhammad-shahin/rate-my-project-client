@@ -108,12 +108,14 @@ const Navbar = () => {
             className='bg-gray-200 opacity-[0.7] backdrop-blur-lg rounded-full p-2 cursor-pointer hover:opacity-[1] hover:bg-primary hover:bg-opacity-[0.39] hover:text-white relative  dark:opacity-[1] dark:text-primary gradient-anim'
             title='Logout'
           >
-            <BiExit
-              onClick={() => {
-                logoutUser();
-              }}
-              className='text-[22px]'
-            />
+            {user && (
+              <BiExit
+                onClick={() => {
+                  logoutUser();
+                }}
+                className='text-[22px]'
+              />
+            )}
           </div>
         </div>
         {/* Profile Icon */}

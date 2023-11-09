@@ -20,7 +20,7 @@ const Dashboard = () => {
   if (isLoading) {
     return (
       <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4'>
-        <h1 className='text-5xl text-center gradient-text'>
+        <h1 className='text-5xl text-center gradient-text py-2'>
           Loading Please Wait
         </h1>
         <Lottie

@@ -20,7 +20,7 @@ const AllProjects = () => {
   // Fetch all projects
   const {
     data: { result: allProjectsData, totalCount },
-    isLoading: isAllProjectsLoading,
+    isLoading,
     error,
   } = useQuery({
     queryKey: ['allProjectsData', currentPage],
@@ -33,10 +33,10 @@ const AllProjects = () => {
   const totalPages = Math.ceil(totalCount / 6);
   const pages = [...new Array(totalPages).fill(0)];
   // handle loading
-  if (isAllProjectsLoading) {
+  if (allProjectsData === undefined) {
     return (
       <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4'>
-        <h1 className='text-5xl text-center gradient-text'>
+        <h1 className='lg:text-5xl text-2xl text-center gradient-text py-3'>
           Loading Please Wait
         </h1>
         <Lottie
@@ -68,7 +68,6 @@ const AllProjects = () => {
     secureAxios
       .get(`/projects/filter?${queryString.toString()}`)
       .then((res) => {
-        console.log(res.data);
         setFilteredProjects(res.data);
         setFilterDataMsg(
           `Total ${res.data.length} Assignment Found ${
@@ -87,7 +86,6 @@ const AllProjects = () => {
     secureAxios
       .get(`/projects/filter?${queryString.toString()}`)
       .then((res) => {
-        console.log(res.data);
         setFilteredProjects(res.data);
         setFilterDataMsg(
           `Total ${res.data.length} Assignment Found ${
@@ -101,7 +99,7 @@ const AllProjects = () => {
   };
 
   const handlePageChange = (move) => {
-    if (move === 'next' && (currentPage + 1) !== totalPages) {
+    if (move === 'next' && currentPage + 1 !== totalPages) {
       setCurrentPage(currentPage + 1);
     }
     if (move === 'prev' && currentPage > 0) {

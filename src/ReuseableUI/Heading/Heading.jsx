@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const Heading = ({ title, subTitle, titleColor }) => {
   return (
-    <div className='my-10 gradient-text flex justify-center items-center flex-col gradient-text'>
+    <div className='py-10 gradient-text flex justify-center items-center flex-col gradient-text'>
       <h1
         className={`title-bar md:text-[48px] text-[20px] uppercase text-center font-bold`}
       >

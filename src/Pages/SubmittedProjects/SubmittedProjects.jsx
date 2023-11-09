@@ -16,7 +16,7 @@ const SubmittedProjects = () => {
   if (isLoading) {
     return (
       <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4 px-[5%]'>
-        <h1 className='text-5xl text-center gradient-text'>
+        <h1 className='lg:text-5xl text-2xl text-center gradient-text py-3'>
           Loading Please Wait
         </h1>
         <Lottie
