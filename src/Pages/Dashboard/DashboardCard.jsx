@@ -106,7 +106,7 @@ const DashboardCard = ({ projectData }) => {
             {projectDescription.slice(0, 120)}...
           </p>
           {/* actions buttons */}
-          <div className='flex-bet flex-wrap gap-2 md:gap-0'>
+          <div className='flex justify-center items-center gap-4 flex-wrap'>
             <PrimaryButton
               handleOnClick={() => navigate(`/update/${_id}`)}
               text='Update'
