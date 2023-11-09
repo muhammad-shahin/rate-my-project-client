@@ -20,7 +20,6 @@ const AllProjects = () => {
   // Fetch all projects
   const {
     data: { result: allProjectsData, totalCount },
-    isLoading,
     error,
   } = useQuery({
     queryKey: ['allProjectsData', currentPage],

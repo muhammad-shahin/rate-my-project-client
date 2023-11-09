@@ -1,7 +1,6 @@
 import { Document, Page, pdfjs } from 'react-pdf';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 // Ensure you set the worker source for pdfjs
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -10,7 +9,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 const PreviewPdf = ({ pdfUrl }) => {
-  const { pdfURL } = useParams();
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const onDocumentLoadSuccess = ({ numPages }) => {
@@ -20,7 +18,7 @@ const PreviewPdf = ({ pdfUrl }) => {
   return (
     <div className='w-full'>
       <Document
-        file={pdfUrl ? pdfUrl : pdfURL}
+        file={pdfUrl}
         onLoadSuccess={onDocumentLoadSuccess}
       >
         <Page
@@ -33,21 +31,21 @@ const PreviewPdf = ({ pdfUrl }) => {
         Page {pageNumber} of {numPages}
       </p>
       <button
-        className='gradient-bg gradient-anim px-5 py-1 rounded-full mr-3'
+        className='gradient-bg gradient-anim px-5 py-1 rounded-full mr-3 cursor-pointer font-semibold text-white'
         onClick={() => setPageNumber(Math.max(pageNumber - 1, 1))}
         disabled={pageNumber <= 1}
       >
         Previous
       </button>
       <button
-        className='gradient-bg gradient-anim px-5 py-1 rounded-full mr-3'
+        className='gradient-bg gradient-anim px-5 py-1 rounded-full mr-3 cursor-pointer font-semibold text-white'
         onClick={() => setPageNumber(Math.min(pageNumber + 1, numPages))}
         disabled={pageNumber >= numPages}
       >
         Next
       </button>
       <a
-        className='gradient-bg gradient-anim px-5 py-1 rounded-full mr-3'
+        className='gradient-bg gradient-anim px-5 py-1 rounded-full mr-3 cursor-pointer font-semibold text-white'
         href={pdfUrl}
         download='document.pdf'
       >

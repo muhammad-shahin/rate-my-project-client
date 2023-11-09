@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { FcInfo } from 'react-icons/fc';
+import logo from '../../assets/logo/rate-my-project-logo.png';
 
 const CustomModal = ({
   modalStatus,
@@ -24,11 +24,18 @@ const CustomModal = ({
       open
       id='custommodal'
       ref={customModal}
-      className='sticky top-0 left-0 w-full h-full bg-transparent'
+      className=' rounded-lg'
     >
       <div className='w-full h-full flex justify-center items-center'>
-        <div className='w- bg-white rounded-lg'>
-          <FcInfo className='relative mx-auto -top-8 w-[48px] text-[68px]' />
+        <div className='w- bg-white'>
+          <div className='w-fit mx-auto'>
+            <img
+              src={logo}
+              alt='Rate My Project Logo'
+              loading='lazy'
+              className='lg:w-[150px] w-[100px] pb-4 pt-8'
+            />
+          </div>
           <div className='p-5 text-center space-y-4'>
             <h2 className='text-3xl'>{title}</h2>
             <p className='font-normal text-[18px] max-w-[350px] capitalize'>
