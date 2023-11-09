@@ -1,5 +1,6 @@
 import { AiOutlineDelete } from 'react-icons/ai';
 import { BsCloudUpload } from 'react-icons/bs';
+import { SlActionRedo } from 'react-icons/sl';
 import PrimaryButton from '../../ReuseableUI/PrimaryButton/PrimaryButton';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -105,7 +106,7 @@ const DashboardCard = ({ projectData }) => {
             {projectDescription.slice(0, 120)}...
           </p>
           {/* actions buttons */}
-          <div className='flex-bet gap-2 md:gap-0'>
+          <div className='flex-bet flex-wrap gap-2 md:gap-0'>
             <PrimaryButton
               handleOnClick={() => navigate(`/update/${_id}`)}
               text='Update'
@@ -115,6 +116,11 @@ const DashboardCard = ({ projectData }) => {
               handleOnClick={handleDeleteProject}
               text='Delete'
               icon={<AiOutlineDelete className='text-[20px]' />}
+            />
+            <PrimaryButton
+              handleOnClick={() => navigate(`/project-details/${_id}`)}
+              text='View Details'
+              icon={<SlActionRedo />}
             />
           </div>
         </div>

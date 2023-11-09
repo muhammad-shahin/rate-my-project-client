@@ -66,27 +66,29 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-  // onAuth state change
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      localStorage.setItem('userData', JSON.stringify(currentUser));
-      setLoading(false);
-      // if (!currentUser) {
-      //   secureAxios
-      //     .post('/logout')
-      //     .then((res) => {
-      //       console.log('Logout success response: ', res.data);
-      //     })
-      //     .catch((error) => {
-      //       console.log('Logout error response : ', error.response);
-      //     });
-      // }
+    const unsubscriber = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        setLoading(false);
+        localStorage.setItem('userData', JSON.stringify(currentUser));
+        secureAxios
+          .post('/jwt', { userId: currentUser.uid })
+          .then((res) => {
+            console.log('Create token success', res);
+          })
+          .catch((error) => console.log('Create token Error', error.message));
+      } else {
+        setUser(null);
+        setLoading(false);
+        secureAxios
+          .post('/logout', {})
+          .then(() => {})
+          .catch((error) => console.log(error.message));
+      }
     });
-    return () => {
-      unSubscribe();
-    };
-  }, [secureAxios]);
+    return () => unsubscriber();
+  }, []);
 
   // toggle profile on click
   const [showProfile, setShowProfile] = useState(false);

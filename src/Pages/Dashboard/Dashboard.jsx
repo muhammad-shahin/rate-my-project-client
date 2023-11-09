@@ -45,9 +45,6 @@ const Dashboard = () => {
   }
   return (
     <section className='bg-[#eff2f39c] dark:bg-dark'>
-      {/* <h1 className='lg:text-5xl text-2xl gradient-text text-center font-semibold py-2 pt-8 px-[10%] xl:px-0'>
-        My Dashboard
-      </h1> */}
       <Heading
         title='My Dashboard'
         subTitle='Assignment Created By You'

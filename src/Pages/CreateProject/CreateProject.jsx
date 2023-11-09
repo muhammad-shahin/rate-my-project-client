@@ -3,9 +3,11 @@ import Form from '../../Components/Form/Form';
 import ProjectCard from '../../Components/ProjectCard/ProjectCard';
 import useAxios from '../../Hooks/useAxios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const CreateProject = () => {
   const secureAxios = useAxios();
+  const navigate = useNavigate();
 
   const [clearRichTextBox, setClearRichTextBox] = useState(false);
   // Load the data from local storage when the component mounts
@@ -39,6 +41,7 @@ const CreateProject = () => {
           });
           form.reset();
           setClearRichTextBox(true);
+          navigate('/dashboard');
         }
       })
       .catch((error) => {

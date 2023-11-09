@@ -46,25 +46,7 @@ const SignUp = () => {
       createUser(email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          const id = { userId: user.uid };
-          secureAxios
-            .post('/jwt', id)
-            .then((res) => {
-              console.log(res.data);
-              setShowModal(false);
-            })
-            .catch((error) => {
-              console.log(error.response);
-              setShowModal(false);
-              Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Failed To Generate Token',
-                text: `Failed To Generate Token. Please Try Again. Error Message: ${error.response.data.message}`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            });
+          
           updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: profilePicture,

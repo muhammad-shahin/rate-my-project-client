@@ -32,36 +32,9 @@ const Login = () => {
     loginUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        const id = { userId: user.uid };
-        console.log(id);
-        secureAxios
-          .post('/jwt', id)
-          .then((res) => {
-            console.log(res.data);
-            setShowModal(false);
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Logged In Successfully',
-              text: 'Redirecting Home Page...',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            // navigate after login
-            navigate(location?.state ? location?.state : '/');
-          })
-          .catch((error) => {
-            console.log(error.response);
-            setShowModal(false);
-            Swal.fire({
-              position: 'center',
-              icon: 'error',
-              title: 'Failed To Generate Token',
-              text: `Failed To Generate Token. Please Try Again. Error Message: ${error.response.data.message}`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          });
+        console.log(user);
+        // navigate after login
+        navigate(location?.state ? location?.state : '/');
       })
       .catch((error) => {
         firebaseAuthError(error.code);
