@@ -16,6 +16,7 @@ import useAxios from '../Hooks/useAxios';
 export const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
+  const userData = JSON.parse(localStorage.getItem('userData'));
   const secureAxios = useAxios();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -40,6 +41,7 @@ const AuthProvider = ({ children }) => {
   const logoutUser = async () => {
     return signOut(auth)
       .then(() => {
+        localStorage.setItem('userData', null);
         secureAxios
           .post('/logout')
           .then((res) => {
@@ -73,12 +75,6 @@ const AuthProvider = ({ children }) => {
         setUser(currentUser);
         setLoading(false);
         localStorage.setItem('userData', JSON.stringify(currentUser));
-        secureAxios
-          .post('/jwt', { userId: currentUser.uid })
-          .then((res) => {
-            console.log('Create token success', res);
-          })
-          .catch((error) => console.log('Create token Error', error.message));
       } else {
         setUser(null);
         setLoading(false);

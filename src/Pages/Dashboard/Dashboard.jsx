@@ -9,7 +9,7 @@ import Heading from '../../ReuseableUI/Heading/Heading';
 const Dashboard = () => {
   const userData = JSON.parse(localStorage.getItem('userData'));
 
-  const { data: myCreatedProjectsData, isLoading } = useQuery({
+  const { data: myCreatedProjectsData, isLoading, isError } = useQuery({
     queryKey: ['myCreatedProjectsData', userData],
     queryFn: getMyCreatedProjectsData,
     initialData: { myCreatedProjectsData: [] },

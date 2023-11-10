@@ -9,10 +9,9 @@ import Modal from '../../Services/Utility/Modal';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Form from '../../Components/Form/Form';
 import signUpAnim from '../../assets/Animation/registration.json';
-import useAxios from '../../Hooks/useAxios';
+import createToken from '../../Api/createToken';
 
 const SignUp = () => {
-  const secureAxios = useAxios();
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
@@ -46,7 +45,7 @@ const SignUp = () => {
       createUser(email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          
+          createToken(user.uid);
           updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: profilePicture,

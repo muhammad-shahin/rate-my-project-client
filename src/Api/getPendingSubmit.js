@@ -1,6 +1,6 @@
 import axiosInstance from './axiosInstance';
-import Swal from 'sweetalert2';
 
+let errorCount = parseInt(localStorage.getItem('errorCount')) || 0;
 const userData = JSON.parse(localStorage.getItem('userData'));
 
 const getPendingSubmit = async () => {
@@ -8,18 +8,18 @@ const getPendingSubmit = async () => {
     const response = await axiosInstance.get(
       `/pending-submit/${userData.email}`
     );
+    // Reset errorCount on successful response
+    errorCount = 0;
     return response.data;
   } catch (error) {
+    // Check for userData and limit errorCount to 2
+    if (userData === null && errorCount <= 2) {
+      errorCount += 1;
+      localStorage.setItem('errorCount', errorCount.toString());
+      window.location.reload();
+    }
     console.log(error);
-    console.log(error);
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Failed To Load Pending Submitted Porjects Data! Try Again',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    return null;
+    return [];
   }
 };
 

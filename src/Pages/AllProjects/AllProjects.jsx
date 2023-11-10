@@ -70,7 +70,7 @@ const AllProjects = () => {
         setFilteredProjects(res.data);
         setFilterDataMsg(
           `Total ${res.data.length} Assignment Found ${
-            selected ? 'for ' + selected : ''
+            selected.length !== 0 ? 'for ' + selected : ''
           }`
         );
       })

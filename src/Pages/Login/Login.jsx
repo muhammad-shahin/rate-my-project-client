@@ -7,11 +7,9 @@ import Modal from '../../Services/Utility/Modal';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Form from '../../Components/Form/Form';
 import loginAnim from '../../assets/Animation/loginAnimation.json';
-import useAxios from '../../Hooks/useAxios';
+import createToken from '../../Api/createToken';
 
 const Login = () => {
-  const secureAxios = useAxios();
-
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
@@ -32,6 +30,7 @@ const Login = () => {
     loginUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        createToken(user.uid);
         console.log(user);
         Swal.fire({
           position: 'center',

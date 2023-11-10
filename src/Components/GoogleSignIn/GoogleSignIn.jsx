@@ -4,19 +4,18 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
 import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useAxios from '../../Hooks/useAxios';
+import createToken from '../../Api/createToken';
 
 const GoogleSignIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { signInWithGoogle } = useContext(AuthContext);
-  const secureAxios = useAxios();
   // handle google sign in
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        createToken(user.uid);
         Swal.fire({
           position: 'center',
           icon: 'success',
